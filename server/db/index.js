@@ -67,31 +67,7 @@ db.knex.schema.hasTable('Keywords').then(function(exists){
 
 db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
-    db.knex.schema.createTable('Project-Keywords', function(project){
-      pkey.increments('id').primary();
-      pkey.integer('keyword_id');
-      pkey.integer('project_id');
-    }).then(function(table){
-      console.log('Created Project-Keyword Table', table);
-    });  
-  }
-});
-
-db.knex.schema.hasTable('Keywords').then(function(exists){
-  if(!exists){
-    db.knex.schema.createTable('Keywords', function(keyword){
-      keyword.increments('id').primary();
-      keyword.string('word');
-      keyword.timestamps();
-    }).then(function(table){
-      console.log('Created Keywords Table', table);
-    });  
-  }
-});
-
-db.knex.schema.hasTable('Project-Keywords').then(function(exists){
-  if(!exists){
-    db.knex.schema.createTable('Project-Keywords', function(project){
+    db.knex.schema.createTable('Project-Keywords', function(pkey){
       pkey.increments('id').primary();
       pkey.integer('keyword_id');
       pkey.integer('project_id');

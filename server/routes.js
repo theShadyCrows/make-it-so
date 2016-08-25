@@ -1,14 +1,15 @@
 var controller = require('./controllers');
 var router = require('express').Router();
-
+// var path = require('path');
 //Connect controller methods to their corresponding routes
-router.get('/messages', controller.messages.get);
+router.get('/*', function (req, res) {
+	console.log("succesful get")
+	res.end("testget")
+});
 
-router.post('/messages', controller.messages.post);
-
-router.get('/users', controller.users.get);
-
-router.post('/users', controller.users.post);
-
+router.post('/*', function (req, res) {
+	console.log(req.baseUrl)
+	res.end("testpost");
+});
 
 module.exports = router;

@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/alexwade13/make-it-so/issues"
   },
-  "homepage": "https://github.com/alexwade13/make-it-so#readme"
+  "homepage": "https://github.com/alexwade13/make-it-so#readme",
+  "dependencies": {
+    "bookshelf": "^0.10.0",
+    "knex": "^0.11.10"
+  }
 }

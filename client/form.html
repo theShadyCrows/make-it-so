@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='makeitso'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Makeit.so</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <h1>Makeit.so</h1>
+    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
+    <div ng-view></div> <!-- idk if this is needed -->
+      <ul>
+        <li><a href="#home">Create a Bounty</a></li>
+        <li><a href="#news">Search</a></li>
+        <li style="float:right"><a class="active" href="#about">About</a></li>
+      </ul>
+
+<!-- ^^^^^^^ I can delete all the above before I push ^^^^^^^ -->
+
+<!-- I want to place/style this better -->
+<div ng-controller="formController">
+  <!-- the novalidate stops the browser from imposing any built-in validation -->
+  <form ng-submit="submit()" class="form" novalidate>
+    Name: <input type="text" ng-model="user.username" /><br />
+    <!-- do validation for correct email format here -->
+    E-mail: <input type="email" ng-model="user.email" /><br /> 
+    Project Name: <input type="projectName" ng-model="user.projectName" /><br />
+    Time Constraint: <input type="timeConstraint" ng-model="user.timeConstraint" /><br />
+    Wanted: <input type="wanted" ng-model="user.wanted" /><br />
+    Description: <input type="description" ng-model="user.description" /><br />
+    <!-- this should be a $ amount -->
+    Pledge: $<input type="pledge" ng-model="user.pledge" /><br />
+    <br />
+    <button type="submit">
+        Make It So!
+      </button>
+  </form>
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script> 
+    <script src="//code.angularjs.org/1.2.1/angular-route.min.js"></script>
+  </body>
+</html>

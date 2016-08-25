@@ -1,9 +1,9 @@
-var dbConfig = require('db.config');
+var dbConfig = require('./dbConfig.js');
 
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : dbConfig.ip,
+    host     : 'mysqlcluster7.registeredsite.com',
     user     : dbConfig.username,
     password : dbConfig.password,
     database : dbConfig.name,

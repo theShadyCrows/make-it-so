@@ -1,4 +1,5 @@
 angular.module("makeitso", [])
+
 	.controller('homeController' function($scope, myFactory){
 		
 		$scope.data = {};
@@ -19,4 +20,5 @@ angular.module("makeitso", [])
 		}
 
 	getBounties();		
+
 	})

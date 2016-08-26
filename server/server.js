@@ -16,7 +16,7 @@ app.listen(8000);
 
 console.log("listening to 8000")
 
-app.use('/*', router);
+app.use(router);
 
 // export our app for testing and flexibility, required by index.js
 module.exports = app;

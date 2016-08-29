@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alexwade13/make-it-so#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "bookshelf": "^0.10.0",
     "knex": "^0.11.10",
     "mysql": "^2.11.1"

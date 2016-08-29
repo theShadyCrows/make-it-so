@@ -1,8 +1,8 @@
-angular.module('makeitso', [])
-	.factory('myFactory', function(){
+angular.module('makeitso.factory', [])
+	.factory('myFactory', function($http){
 		var getAll = function(){
 
-			console.lod("getAll() called!!!!!!!!!!!!!")
+			console.log("getAll() called!!!!!!!!!!!!!")
 			return $http({
 				method: 'GET',
 				url: '/bounties'

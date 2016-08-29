@@ -1,6 +1,10 @@
-angular.module('makeitso', ['ngRoute'])
-	.config(function($routeProvider){
-		console.log('outside router!!!!');
+angular.module('makeitso', [
+	'makeitso.factory', 
+	'makeitso.form', 
+	'makeitso.home',
+	'ngRoute'
+	])
+	.config(function($routeProvider, $httpProvider){
 		$routeProvider
 			.when('/form', {
 				templateUrl: 'app/form.html',
@@ -13,6 +17,7 @@ angular.module('makeitso', ['ngRoute'])
 			.otherwise({
 				redirectTo: '/home'
 			})
+
 
 
 

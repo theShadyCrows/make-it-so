@@ -21,7 +21,6 @@ db.knex.schema.hasTable('Projects').then(function(exists){
       project.string('time_constraint');
       project.string('wanted');
       project.string('description');
-      project.integer('total');
       project.timestamps();
     }).then(function(table){
       console.log('Created Projects Table', table);

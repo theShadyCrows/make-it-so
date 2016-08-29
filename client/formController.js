@@ -1,20 +1,42 @@
-angular.module('shortly.shorten', []) // idk what to call this
+angular.module('makeitso', [])
 
-.controller('formController', function () {
+.controller('formController', function ($scope, $http) {
 
-// I think I need to submit the data from ea field in the form to the $scope and then on submit button click transfer the entered data to the,
+  $scope.user = {};
 
+// this is the function that accepts the user's inputs to the form on the 
+// form.html page, then assigns them to the $scope.user object and then
+// converts the object to JSON to be passed to the Express server & the database
 
-  $scope.link = {};
-  $scope.addLink = function () {
-    $scope.loading = true;
-    Links.addOne($scope.link)
-      .then(function () {
-        $scope.loading = false;
-        $location.path('/');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  $scope.submit = function() {
+    $scope.user.username = username;
+    $scope.user.email = email;
+    $scope.user.projectName = projectName;
+    $scope.user.timeConstraint = timeConstraint;
+    $scope.user.wanted = wanted;
+    $scope.user.description = description;
+    $scope.user.pledge = pledge;
+  
+    console.log('*** user info in $scope - - >', $scope.user);
+  
+    var stringifiedScope = JSON.stringify($scope.user);
+    console.log(' -- stringifiedScope -->', stringifiedScope);
+
+    $http({
+      method: 'POST',
+      url: 'http://localhost:8000',
+      Content-Type: 'application/json',
+      data: stringifiedScope
+    })
+    .then(function() {
+      console.log('user information submitted successfully');
+    })
+    .catch(function() {
+      console.log('user information not submitted');
+    });
+
+  // should there be some code here to reset the form?
+
   };
-  });
+});
+

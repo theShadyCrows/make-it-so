@@ -1,4 +1,3 @@
-
 var db = require('../db/index');
 var Project = require('../models/projectModel');
 

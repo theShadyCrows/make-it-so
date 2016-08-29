@@ -1,6 +1,6 @@
-angular.module('shortly.shorten', []) // idk what to call this
+angular.module('makeitso.form', []) // idk what to call this
 
-.controller('formController', function () {
+.controller('formController', function($scope, $http){
 
 // I think I need to submit the data from ea field in the form to the $scope and then on submit button click transfer the entered data to the,
 

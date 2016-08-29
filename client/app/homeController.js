@@ -1,26 +1,24 @@
-angular.module("makeitso", [])
+angular.module("makeitso.home", [])
 
-	.controller('homeController' function($scope, myFactory){
+	.controller('homeController' function($scope, $http, myFactory){
 		
 		$scope.data = {};
 
-		var getBounties = function(){
-
+		$scope.getBounties = function(){
 			console.log("getBounties() called!!!!")
 
-			myFactory.getAll()
-				.then(function (bounties){
-					$scope.data.bounties = bounties;
+			// myFactory.getAll()
+			// 	.then(function (bounties){
+			// 		console.log("homeController getAll() call");
+			// 		$scope.data.bounties = bounties;
 
 
-				})
-				.catch(function(error){
-					console.error(error);
+			// 	})
+			// 	.catch(function(error){
+			// 		console.error(error);
 
-				})
+			// 	})
 
 			
-		}
-
-	getBounties();		
+		}		
 	})

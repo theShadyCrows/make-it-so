@@ -5,6 +5,9 @@ angular.module("makeitso", [])
 		$scope.data = {};
 
 		var getBounties = function(){
+
+			console.log("getBounties() called!!!!")
+
 			myFactory.getAll()
 				.then(function (bounties){
 					$scope.data.bounties = bounties;

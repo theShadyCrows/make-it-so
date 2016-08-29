@@ -1,4 +1,4 @@
-var db = require('../db/dbConfig');
+var db = require('../db/index');
 var ProjectKeyword = require('../models/projectKeywordModel');
 
 var ProjectKeywords = new db.Collection();

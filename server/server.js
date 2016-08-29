@@ -1,9 +1,13 @@
 var express = require('express');
 var router = require('./routes.js');
+var bodyParser = require('body-parser');
+
 
 var app = express();
 app.set('port', 3000);
 
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json())
 // configure our server with all the middleware and routing
 // require('./config/middleware.js')(app, express);
 // require('./routes.js')(app, express);

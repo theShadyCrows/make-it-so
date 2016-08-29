@@ -1,15 +1,17 @@
-var controller = require('./controllers');
+// var controller = require('./controllers');
+var db = require('../db/index.js');
 var router = require('express').Router();
 // var path = require('path');
 //Connect controller methods to their corresponding routes
 router.get('/test', function (req, res) {
-	console.log("succesful get");
+	console.log("succesful get:", db.knex.select("name").from("Projects"));
 	res.end("testget");
 });
 
 router.post('/test', function (req, res) {
 	console.log("succesful post");
-	res.end("testpost");
+	db.knex('Projects[').insert({name: "testname"});
+	res.end("inserted?");
 });
 
 module.exports = router;

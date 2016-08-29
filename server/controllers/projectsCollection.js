@@ -1,4 +1,5 @@
-var db = require('../db/db.config');
+
+var db = require('../db/index');
 var Project = require('../models/projectModel');
 
 var Projects = new db.Collection();

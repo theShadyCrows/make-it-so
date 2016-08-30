@@ -1,5 +1,3 @@
-// var dbConfig = require('../dbConfig.js');
-// var ENV = require('')
 var knex = require('knex')({
   client: 'mysql',
   connection: {

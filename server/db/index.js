@@ -1,12 +1,12 @@
 // var dbConfig = require('../dbConfig.js');
-
+var ENV = require('')
 var knex = require('knex')({
   client: 'mysql',
   connection: {
     host     : 'mysqlcluster7.registeredsite.com',
-    user     : ENV['username'],
-    password : ENV['password'],
-    database : ENV['name'],
+    user     : process.env.username,
+    password : process.env.password,
+    database : process.env.name,
     charset  : 'utf8'
   }
 });

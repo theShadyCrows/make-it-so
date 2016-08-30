@@ -2,7 +2,7 @@
   "name": "developer",
   "version": "1.0.0",
   "description": "inverse kickstarter",
-  "main": "./server/server.js",
+  "main": "server/server.js",
   "engines": {
     "node": "4.4.7",
     "npm": "2.1.x"

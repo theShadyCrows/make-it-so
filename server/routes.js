@@ -2,9 +2,9 @@ var db = require('./db/index.js');
 var router = require('express').Router();
 
 //Connect controller methods to their corresponding routes
-var Projects = require ('./controllers/projectsCollection.js')
-var Pledges = require ('./controllers/pledgesCollection.js')
-var Users = require ('./controllers/usersCollection.js')
+var Projects = require ('./collections/projects.js')
+var Pledges = require ('./collections/pledges.js')
+var Users = require ('./collections/users.js')
 
 router.get('/projects', function (req, res) {
 	Projects.reset().fetch()
@@ -57,13 +57,14 @@ router.get('/keywords', function (req, res) {
 */
 
 router.post('/project', function (req, res) {
-	console.log("succesful post", req.body.name);
+	console.log("succesful post to project", req.body.timeConstraint);
 	Projects.create({
 		name: req.body.projectName,
-		time_constraint: req.body.time_constraint,
+		// timeConstraint: req.body.timeConstraint,
 		wanted: req.body.wanted,
 		description: req.body.description
 	});
+	console.log("projectcreated")
 
 	Projects.model.where({"name":req.body.projectName}).fetch().then(function(project){
 		Users.model.where({"username":req.body.username}).fetch().then(function(user){
@@ -90,12 +91,19 @@ router.post('/project', function (req, res) {
 */
 router.post('/users', function (req, res) {
 	console.log("succesful post to users", req.body);
-	Users.create({
-		username: req.body.username,
-		email: req.body.email
+	db.knex('Users').insert({
+		"email": req.body.email,
+		"username": req.body.username
+	}).then(function(data){
+		console.log(data);
 	})
+	// new Users.model ({
+	// 	email: req.body.email,
+	// 	username: req.body.username
+	// }).save().then(function(){
 
-	res.send(req.body);
+		res.send(req.body);
+	// });
 });
 
 router.post('/keywords', function (req, res) {

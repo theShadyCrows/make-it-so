@@ -1,5 +1,5 @@
 var db = require('../db/index');
-var User = require('../models/userModel');
+var User = require('../models/user');
 
 var Users = new db.Collection();
 

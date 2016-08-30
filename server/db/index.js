@@ -18,10 +18,9 @@ db.knex.schema.hasTable('Projects').then(function(exists){
     db.knex.schema.createTable('Projects', function(project){
       project.increments('id').primary();
       project.string('name');
-      project.string('time_constraint');
+      project.string('timeConstraint');
       project.string('wanted');
       project.string('description');
-      project.integer('total');
       project.timestamps();
     }).then(function(table){
       console.log('Created Projects Table', table);
@@ -47,8 +46,8 @@ db.knex.schema.hasTable('Users').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Users', function(user){
       user.increments('id').primary();
-      user.string('username');
       user.string('email');
+      user.string('username');
     }).then(function(table){
       console.log('Created Users Table', table);
     });  

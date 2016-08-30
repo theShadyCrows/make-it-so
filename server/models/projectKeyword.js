@@ -1,6 +1,6 @@
 var db = require('../db/index.js');
-var User = require('./keywordModel.js');
-var Project = require('./projectModel.js');
+var User = require('./keyword.js');
+var Project = require('./project.js');
 
 
 var ProjectKeyword = db.Model.extend({

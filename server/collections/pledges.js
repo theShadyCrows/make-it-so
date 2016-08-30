@@ -1,5 +1,5 @@
 var db = require('../db/index');
-var Pledge = require('../models/pledgeModel');
+var Pledge = require('../models/pledge');
 
 var Pledges = new db.Collection();
 

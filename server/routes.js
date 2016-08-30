@@ -70,8 +70,14 @@ router.post('/project', function (req, res) {
 		}).select('id').then(function(data){
 			console.log("********",req.body.pledge);
 			var amount = JSON.parse(req.body.pledge);
+			var user_id;
+			if (data[0] === undefined){
+				user_id = 0
+			} else {
+				user_id = data[0].id
+			}
 			Pledges.create({
-				user_id: data[0].id,
+				user_id: user_id,
 				project_id: attributes.id,
 				amount: amount
 			}).then(function(x){

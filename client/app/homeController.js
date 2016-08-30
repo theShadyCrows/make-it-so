@@ -2,23 +2,30 @@ angular.module('makeitso.home', [])
 
 	.controller('homeController', function($scope, $http){
 		
-		$scope.data = {};
+		$scope.data = [];
 
 		$scope.getBounties = function(){
 			console.log("getBounties() called!!!!")
 
-			// myFactory.getAll()
-			// 	.then(function (bounties){
-			// 		console.log("homeController getAll() call");
-			// 		$scope.data.bounties = bounties;
+
+			$http({
+     			'method': 'GET',
+     			'url': '/projects',
+     			'Content-Type': 'application/json'
+   			})
+			.success(function(response){
+				
+				$scope.data = response;
+				console.log("Success!!!! scope.data: ", $scope.data);
 
 
-			// 	})
-			// 	.catch(function(error){
-			// 		console.error(error);
+			}).error(function(error){
+				console.log(error);
 
-			// 	})
+			})		
+		}	
 
-			
-		}		
+		
+
+
 	})

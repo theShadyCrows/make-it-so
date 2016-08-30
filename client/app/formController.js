@@ -24,7 +24,7 @@ angular.module('makeitso.form', [])
 
    $http({
      'method': 'POST',
-     'url': 'http://localhost:8000/project',
+     'url': '/project',
      'Content-Type': 'application/json',
      'data': stringifiedScope
    })

@@ -25,6 +25,10 @@ angular.module('makeitso.home', [])
 			})		
 		}	
 
+		$scope.contribute = function(id){
+			console.log(id);
+		}
+
 		
 
 

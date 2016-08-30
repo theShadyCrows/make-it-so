@@ -1,35 +1,27 @@
-<div ng-app="makeitso" ng-controller='homeController'>
-<button type="button" ng-click="getBounties()">get bounties!!</button>
-<br>
-Bounty: Stephen King Zombie Book
-<br>
-Target: Stephen King
-<br>
-Description: Why hasn't the master of horror tackled zombies? Let's make this happen people!
-<br>
-$55,024
-<br>
-created by Stephanie Clark
-<br>
-<br>
-Bounty: New Season of Firefly
-<br>
-Target: 20th Century Fox
-<br>
-Description: good show, right? moar please.
-<br>
-$3609
-<br>
-created by Mauro Renallo
-<br>
-<br>
-Bounty: new park near High Street
-<br>
-Target: anyone
-<br>
-Description: Our town is dusty and nasty. Let's green it up.
-<br>
-$698
-<br>
-created by Jeff "The Falcon" McCallister
+<div ng-controller='homeController' ng-init="getBounties()">
+<button type="button"  ng-click="getBounties()">get bounties!!</button>
+	<h2>Current Bounties</h2>
+	<div ng-repeat="bounties in data">
+		<h4>{{bounties.name}}</h4>
+		<h5>{{bouties.wanted}}</h5>
+		<h5>{{bounties.description}}</h5>
+		<h5>{{bounties.time_constraint}}</h5>
+		<!-- ng controller = pledge controller -->
+			<!-- in pledge controller:
+
+				GET request to display plege total amount on pledges table
+					attached to showTotal(bounties.id)
+				POST request to edit total amount on pledges table
+					attached to updateBounty(bounties.id, user.id)
+					user.id might be sent automagically
+					
+
+
+			 -->
+		<!-- where total info goes -->
+		<button class="editButton" type="submit" ng-submit="contribute()">contribute</button>
+		<br>
+
+	</div>
 </div>
+

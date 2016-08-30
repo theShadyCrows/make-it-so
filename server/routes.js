@@ -9,20 +9,32 @@ var Users = require ('./collections/users.js')
 router.get('/projects', function (req, res) {
 	Projects.reset().fetch()
 		.then(function(projects) {
-			// console.log("project models:",projects.models)
-			res.send(projects.models)
-		});
+			var finished = [];
+			var ret = projects.models;
+			var recurse = function(i){
+				// console.log(projects.models[i])
+				db.knex('Pledges').where({
+					"project_id":projects.models[i].id					
+				}).select("amount").then(function (amount){
+					if(amount.length !== 0) {
 
-	console.log("succesful get:");//, db.knex.select("name").from("Projects"));
-});
+						var total = 0;
+						for (var q in amount){
+							total += amount[q].amount;
+						}
 
-
-router.get('/projects:projectName', function (req, res) {
-
-	Projects.model.where({"name":projectName}).fetch().then(function(project){
-		res.send(project);
-	})
-});
+						ret[i].attributes.amount = total
+					}
+					if (++i < ret.length){
+						recurse(i);
+					} else {
+						res.send(ret)
+					}
+				})
+			}
+			recurse(0);
+		})
+	});
 
 router.get('/users', function (req, res) {
 	Users.reset().fetch()
@@ -43,19 +55,6 @@ router.get('/keywords', function (req, res) {
 
 	console.log("succesful get:");//, db.knex.select("name").from("Projects"));
 });
-
-/*
-{
-	username:[string],
-	email:[string], //do we need this??????
-	projectName:[string],
-	timeConstraint: [int],
-	wanted: [string],
-	description: [string],
-	pledge:[int]
-}
-*/
-
 
 router.post('/project', function (req, res) {
   console.log("succesful post to projet:", req.body);
@@ -132,34 +131,6 @@ router.post('/pledges', function (req, res) {
 		})
 	});
 
-
-
-
-
-	console.log("succesful post to pledges", req.body);
-
-	Projects.model.where({"name":req.body.project}).fetch().then(function(project){
-
-		Users.model.where({"username":req.body.username}).fetch().then(function(user){
-
-			Pledges.create({
-				user_id: user.attributes.id,
-				project_id: project.attributes.id,
-				amount: req.body.amount
-			});
-
-			console.log( project);
-
-			res.send(req.body);
-		});
-	});
 });
-
-
-//do we even need a get pledges function?
-router.get('/pledges', function(req,res){
-
-})
-
 
 module.exports = router;

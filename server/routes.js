@@ -56,32 +56,31 @@ router.get('/keywords', function (req, res) {
 }
 */
 
+
 router.post('/project', function (req, res) {
-	console.log("succesful post to project", req.body.timeConstraint);
-	Projects.create({
-		name: req.body.projectName,
-		// timeConstraint: req.body.timeConstraint,
-		wanted: req.body.wanted,
-		description: req.body.description
-	});
-	console.log("projectcreated")
-
-	Projects.model.where({"name":req.body.projectName}).fetch().then(function(project){
-		Users.model.where({"username":req.body.username}).fetch().then(function(user){
-
+  console.log("succesful post to projet:", req.body);
+  Projects.create({
+  	name: req.body.projectName,
+  	timeConstraint: req.body.timeConstraint,
+  	wanted: req.body.wanted,
+  	description: req.body.description
+  }).then(function(attributes){
+  	console.log(req.body)
+		db.knex('Users').where({
+			"username": req.body.username
+		}).select('id').then(function(data){
+			console.log("********",req.body.pledge);
+			var amount = JSON.parse(req.body.pledge);
 			Pledges.create({
-				user_id: user.attributes.id,
-				project_id: project.attributes.id,
-				amount: req.body.pledge
-			});
-
-			console.log( project);
-
-			res.send(req.body);
+				user_id: data[0].id,
+				project_id: attributes.id,
+				amount: amount
+			}).then(function(x){
+	  		res.send(req.body);
+			})
 		});
-	});
+ 	});
 });
-
 
 /*
 {
@@ -97,13 +96,8 @@ router.post('/users', function (req, res) {
 	}).then(function(data){
 		console.log(data);
 	})
-	// new Users.model ({
-	// 	email: req.body.email,
-	// 	username: req.body.username
-	// }).save().then(function(){
+	res.send(req.body);
 
-		res.send(req.body);
-	// });
 });
 
 router.post('/keywords', function (req, res) {
@@ -123,6 +117,25 @@ router.post('/keywords', function (req, res) {
 }
 */
 router.post('/pledges', function (req, res) {
+
+	db.knex('Users').where({
+		"username": req.body.username
+	}).select('id').then(function(data){
+		console.log("********",req.body.pledge);
+		var amount = JSON.parse(req.body.pledge);
+		Pledges.create({
+   		user_id: data[0].id,
+      project_id: attributes.id,
+      amount: amount
+		}).then(function(x){
+    	res.send(req.body);
+		})
+	});
+
+
+
+
+
 	console.log("succesful post to pledges", req.body);
 
 	Projects.model.where({"name":req.body.project}).fetch().then(function(project){

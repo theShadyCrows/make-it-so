@@ -1,6 +1,6 @@
-angular.module("makeitso.home", [])
+angular.module('makeitso.home', [])
 
-	.controller('homeController' function($scope, $http, myFactory){
+	.controller('homeController', function($scope, $http){
 		
 		$scope.data = {};
 

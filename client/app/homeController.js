@@ -26,7 +26,7 @@ angular.module('makeitso.home', [])
 		}	
 
 		$scope.contribute = function(id){
-			console.log(id);
+			console.log('this is the id!', id);
 		}
 
 		

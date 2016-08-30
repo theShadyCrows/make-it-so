@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/../client'));
 
 // start listening to requests on port 8000
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
 
 console.log("listening to 8000")
 

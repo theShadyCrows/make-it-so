@@ -9,8 +9,10 @@
 		<h5>{{bounties.amount}}</h5>
 
 		<form ng-submit="contribute(values, bounties.id)">
+		<ng-focus>
 		Username: <input type="text" ng-model="values.username" placeholder="Username"/><br />
 		Amount: <input type="integer" ng-model="values.amount" placeholder="Amount to Contribute"/><br />
+		</ng-focus>
 		</form>
 		<button type="submit" ng-click="contribute(values, bounties.id)">contribute</button>
 

@@ -154,7 +154,6 @@ router.post('/pledges', function (req, res) {
   })
 });
 
-
 router.delete('/project', function (req, res) {
 
   db.knex('Projects').where({
@@ -163,25 +162,6 @@ router.delete('/project', function (req, res) {
     res.end();
   })
 
-
-  // db.knex('Users').where({
-  //   "username": req.body.username
-  // }).select('id').then(function(data){
-  //   var user_id;
-  //   if (data.length !== 0){
-  //     user_id = data[0].id;
-  //   } else {
-  //     user_id = 1;    
-  //   }
-  //   db.knex('Pledges').insert({
-  //     "project_id": req.body.project_id,
-  //     "user_id": user_id,
-  //     "amount":req.body.amount
-  //   }).then(function(pledgeId){
-  //     console.log(pledgeId);
-  //     res.send(pledgeId); 
-  //   })
-  // })
 });
 
 module.exports = router;

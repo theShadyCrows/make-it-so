@@ -12,7 +12,7 @@
 		Username: <input type="text" ng-model="values.username" placeholder="Username"/><br />
 		Amount: <input type="text" ng-model="values.amount" placeholder="Amount to Contribute"/><br />
 		</form>
-		<button type="submit">contribute</button>
+		<button type="submit" ng-click="contribute(values, bounties.id)">contribute</button>
 
 		<!-- ng controller = pledge controller -->
 			<!-- in pledge controller:

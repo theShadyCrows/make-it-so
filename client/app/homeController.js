@@ -29,12 +29,20 @@ angular.module('makeitso.home', [])
 		$scope.contribute = function(values, id){
 			$scope.values.username = values.username;
 			$scope.values.amount = values.amount;
-			$scope.values.bounty = id;
-			console.log('all vals', $scope.values);
-			// console.log('this is the id!', id);
+			$scope.values.project_id = id;
+
+ 			var stringifiedScope = JSON.stringify($scope.values);
+			$http({
+				'method': 'POST',
+     		'url': '/pledges',
+     		'Content-Type': 'application/json',
+     		'data': stringifiedScope
+   			})
+			.then(function(){
+				console.log('post to pledges went through, all vals:', stringifiedScope);
+			})
+			.catch(function(error){
+				console.log('error submitting post to pledges', error)
+			});
 		}
-
-		
-
-
 	})

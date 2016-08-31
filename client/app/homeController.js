@@ -25,8 +25,9 @@ angular.module('makeitso.home', [])
 			})		
 		}	
 
-		$scope.contribute = function(id){
-			console.log('this is the id!', id);
+		$scope.contribute = function(username, amount, id){
+			console.log('all vals', username, amount, id);
+			// console.log('this is the id!', id);
 		}
 
 		

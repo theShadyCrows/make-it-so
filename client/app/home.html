@@ -10,8 +10,8 @@
 
 		<ng-focus>
 		<form ng-submit="contribute(values, bounties.id)">
-		Username: <input type="text" ng-model="values.username" placeholder="Username"/><br />
-		Amount: <input type="integer" ng-model="values.amount" placeholder="Amount to Contribute"/><br />
+		Username: <input type="text" ng-model="values.username" placeholder="Username" autofocus/><br />
+		Amount: <input type="integer" ng-model="values.amount" placeholder="Amount to Contribute" autofocus/><br />
 		</ng-focus>
 		</form>
 		<button type="submit" ng-click="contribute(values, bounties.id)">contribute</button>

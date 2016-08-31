@@ -47,8 +47,11 @@ angular.module('makeitso.home', [])
 			});
 		}
 
-		$scope.claim = function(id){
-			$http.delete('/project', id)
+		$scope.claim = function(project_id){
+			$scope.remove.project_id = project_id
+			var sendable = JSON.stringify($scope.remove.project_id);
+			console.log('this is sendable:', sendable)
+			$http.delete('/project', sendable)
 			.then(function(response){
 				console.log('project is deleted!',response);
 			})

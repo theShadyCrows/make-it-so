@@ -46,4 +46,15 @@ angular.module('makeitso.home', [])
 				console.log('error submitting post to pledges', error)
 			});
 		}
+
+		$scope.claim = function(id){
+			$http.delete('/project', id)
+			.then(function(response){
+				console.log('project is deleted!',response);
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+		}
+
 	})

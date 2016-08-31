@@ -154,17 +154,34 @@ router.post('/pledges', function (req, res) {
   })
 });
 
-router.getElementsByTagName('')('/test/:id', function (req, res) {
-  console.log(id)
-  // db.knex('Users').insert({
-  //   "email": req.body.email,
+
+router.delete('/project', function (req, res) {
+
+  db.knex('Projects').where({
+   "id": req.body.project_id 
+  }).del().then(function(x){
+    res.end();
+  })
+
+
+  // db.knex('Users').where({
   //   "username": req.body.username
-  // }).then(function(data){
-  //   console.log("succesful post to users", req.data);
-  //   res.send(req.body);
+  // }).select('id').then(function(data){
+  //   var user_id;
+  //   if (data.length !== 0){
+  //     user_id = data[0].id;
+  //   } else {
+  //     user_id = 1;    
+  //   }
+  //   db.knex('Pledges').insert({
+  //     "project_id": req.body.project_id,
+  //     "user_id": user_id,
+  //     "amount":req.body.amount
+  //   }).then(function(pledgeId){
+  //     console.log(pledgeId);
+  //     res.send(pledgeId); 
+  //   })
   // })
 });
-
-
 
 module.exports = router;

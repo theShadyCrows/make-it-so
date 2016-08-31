@@ -70,7 +70,8 @@ angular.module('makeitso.home', [])
 
 
 		$scope.claim = function(id) {
-  	$http.delete("/project", { 'project_id': id }).success(function(result) {
+			console.log(id);
+  	$http.delete("/project", {'project_id': id}).success(function(result) {
       console.log(result);
       $scope.resultDelete = result;
   	}).error(function() {

@@ -40,6 +40,7 @@ angular.module('makeitso.home', [])
    			})
 			.then(function(){
 				console.log('post to pledges went through, all vals:', stringifiedScope);
+				$scope.getBounties();
 			})
 			.catch(function(error){
 				console.log('error submitting post to pledges', error)

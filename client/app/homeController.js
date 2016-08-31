@@ -53,7 +53,7 @@ angular.module('makeitso.home', [])
 			var sendable = JSON.stringify($scope.remove.project_id);
 			console.log('this is sendable:', sendable)
 			$http.delete('/project', sendable)
-			console.log('in delete...');
+			// console.log('in delete...')
 			.then(function(response){
 				console.log('project is deleted!',response);
 				$scope.getBounties();

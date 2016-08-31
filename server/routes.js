@@ -161,7 +161,6 @@ router.delete('/project', function (req, res) {
   }).del().then(function(x){
     res.end();
   })
-
 });
 
 module.exports = router;

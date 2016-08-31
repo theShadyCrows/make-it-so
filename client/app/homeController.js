@@ -47,6 +47,8 @@ angular.module('makeitso.home', [])
 			});
 		}
 
+		//CLAIM FUNCTION 1
+		// $scope.remove = {};
 		// $scope.claim = function(project_id){
 		// 	$scope.remove.project_id = project_id;
 		// 	console.log('this is sendable:', $scope.remove.project_id);
@@ -65,18 +67,28 @@ angular.module('makeitso.home', [])
 		// 	})
 		// }
 
-		$scope.remove = {};
+//CLAIM FUNCTION 2
+// $scope.remove = {};
+// 		$scope.claim = function(id) {
+// 			$scope.remove.project_id = id;
+// 			var sendable = JSON.stringify($scope.remove);
+// 			console.log(sendable);
+//  	  	$http.delete("/project", sendable).success(function(result) {
+//       console.log('it worked!', result);
+//   	}).error(function() {
+//       console.log("error");
+//   });
+// };
 
-
-		$scope.claim = function(id) {
-			$scope.remove.project_id = id;
-			var sendable = JSON.stringify($scope.remove);
-			console.log(sendable);
- 	  	$http.delete("/project", sendable).success(function(result) {
-      console.log('it worked!', result);
-  	}).error(function() {
-      console.log("error");
-  });
-};
+//CLAIM FUNCTION 3
+		$scope.claim = function(id){
+			$http.delete('/project', id)
+			.then(function(response){
+				console.log('project is deleted!',response);
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+		}
 
 	})

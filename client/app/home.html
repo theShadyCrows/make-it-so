@@ -8,9 +8,9 @@
 		<h5>{{bounties.timeConstraint}}</h5>
 		<h5>{{bounties.amount}}</h5>
 
-		<form ng-submit="contribute(username, amount, bounties.id)">
-		Username: <input type="text" ng-model="username" placeholder="Username"/><br />
-		Amount: <input type="text" ng-model="amount" placeholder="Amount to Contribute"/><br />
+		<form ng-submit="contribute(values, bounties.id)">
+		Username: <input type="text" ng-model="values.username" placeholder="Username"/><br />
+		Amount: <input type="text" ng-model="values.amount" placeholder="Amount to Contribute"/><br />
 		</form>
 		<button type="submit">contribute</button>
 

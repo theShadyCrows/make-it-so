@@ -7,7 +7,7 @@
 		<h5>{{bounties.description}}</h5>
 		<h5>{{bounties.timeConstraint}}</h5>
 		<h5>{{bounties.amount}}</h5>
-		<button type="submit" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
 
 		<ng-focus>
 		<form ng-submit="contribute(values, bounties.id)">

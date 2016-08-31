@@ -1,7 +1,7 @@
 var db = require('./db/index.js');
 var router = require('express').Router();
 
-//Connect controller methods to their corresponding routes
+//Connect collections methods to their corresponding routes
 var Projects = require ('./collections/projects.js')
 var Pledges = require ('./collections/pledges.js')
 var Users = require ('./collections/users.js')
@@ -153,5 +153,18 @@ router.post('/pledges', function (req, res) {
     })
   })
 });
+
+router.getElementsByTagName('')('/test/:id', function (req, res) {
+  console.log(id)
+  // db.knex('Users').insert({
+  //   "email": req.body.email,
+  //   "username": req.body.username
+  // }).then(function(data){
+  //   console.log("succesful post to users", req.data);
+  //   res.send(req.body);
+  // })
+});
+
+
 
 module.exports = router;

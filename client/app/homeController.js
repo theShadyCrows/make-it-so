@@ -47,24 +47,35 @@ angular.module('makeitso.home', [])
 			});
 		}
 
-		$scope.remove = {};
-		$scope.claim = function(project_id){
-			$scope.remove.project_id = project_id;
-			// var sendable = JSON.stringify($scope.remove.project_id);
-			console.log('this is sendable:', $scope.remove.project_id);
-			$http({
-				'method': 'DELETE',
-				'url': "/project",
-				'Content-Type': 'application/json',
-				'data': $scope.remove.project_id
-			})
-			.then(function(response){
-				console.log('project is deleted!',response);
-				$scope.getBounties();
-			})
-			.catch(function(error){
-				console.log(error);
-			})
-		}
+		// $scope.remove = {};
+		// $scope.claim = function(project_id){
+		// 	$scope.remove.project_id = project_id;
+		// 	// var sendable = JSON.stringify($scope.remove.project_id);
+		// 	console.log('this is sendable:', $scope.remove.project_id);
+		// 	$http({
+		// 		'method': 'DELETE',
+		// 		'url': "/project",
+		// 		'Content-Type': 'application/json',
+		// 		'data': $scope.remove.project_id
+		// 	})
+		// 	.then(function(response){
+		// 		console.log('project is deleted!',response);
+		// 		$scope.getBounties();
+		// 	})
+		// 	.catch(function(error){
+		// 		console.log(error);
+		// 	})
+		// }
+
+
+
+		$scope.claim = function(id) {
+  	$http.delete("/project", { 'project_id': id }).success(function(result) {
+      console.log(result);
+      $scope.resultDelete = result;
+  	}).error(function() {
+      console.log("error");
+  });
+};
 
 	})

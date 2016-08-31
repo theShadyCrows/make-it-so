@@ -25,8 +25,12 @@ angular.module('makeitso.home', [])
 			})		
 		}	
 
-		$scope.contribute = function(username, amount, id){
-			console.log('all vals', username, amount, id);
+		$scope.values = {};
+		$scope.contribute = function(values, id){
+			$scope.values.username = values.username;
+			$scope.values.amount = values.amount;
+			$scope.values.bounty = id;
+			console.log('all vals', $scope.values);
 			// console.log('this is the id!', id);
 		}
 

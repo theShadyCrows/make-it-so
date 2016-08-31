@@ -154,16 +154,16 @@ router.post('/pledges', function (req, res) {
   })
 });
 
-router.getElementsByTagName('')('/test/:id', function (req, res) {
-  console.log(id)
-  // db.knex('Users').insert({
-  //   "email": req.body.email,
-  //   "username": req.body.username
-  // }).then(function(data){
-  //   console.log("succesful post to users", req.data);
-  //   res.send(req.body);
-  // })
-});
+// router.getElementsByTagName('')('/test/:id', function (req, res) {
+//   console.log(id)
+//   // db.knex('Users').insert({
+//   //   "email": req.body.email,
+//   //   "username": req.body.username
+//   // }).then(function(data){
+//   //   console.log("succesful post to users", req.data);
+//   //   res.send(req.body);
+//   // })
+// });
 
 
 

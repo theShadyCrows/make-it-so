@@ -8,8 +8,8 @@
 		<h5>{{bounties.timeConstraint}}</h5>
 		<h5>{{bounties.amount}}</h5>
 
-		<form ng-submit="contribute(values, bounties.id)">
 		<ng-focus>
+		<form ng-submit="contribute(values, bounties.id)">
 		Username: <input type="text" ng-model="values.username" placeholder="Username"/><br />
 		Amount: <input type="integer" ng-model="values.amount" placeholder="Amount to Contribute"/><br />
 		</ng-focus>

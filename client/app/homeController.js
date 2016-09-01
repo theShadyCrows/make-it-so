@@ -2,7 +2,7 @@ angular.module('makeitso.home', [])
 
 	.controller('homeController', function($scope, $http){
 		
-		$scope.data = {};
+		$scope.data = [];
 
 		$scope.getBounties = function(){
 			console.log("getBounties() called!!!!")
@@ -30,6 +30,7 @@ angular.module('makeitso.home', [])
 			$scope.values.amount = amount;
 			$scope.values.project_id = id;
  			var stringifiedScope = JSON.stringify($scope.values);
+			console.log(stringifiedScope);
 			$http({
 				'method': 'POST',
      		'url': '/pledges',

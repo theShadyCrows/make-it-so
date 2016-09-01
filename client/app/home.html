@@ -1,7 +1,7 @@
 <div ng-controller='homeController' ng-init="getBounties()">
 <button type="button"  ng-click="getBounties()">get bounties!!</button>
 	<h2>Current Bounties</h2>
-	<div ng-repeat="bounties in data">
+	<div ng-repeat="bounties in data | orderBy:'$index':true">
 		<h4>{{bounties.name}}</h4>
 		<h5>{{bounties.wanted}}</h5>
 		<h5>{{bounties.description}}</h5>
@@ -9,9 +9,9 @@
 		<h5>{{bounties.amount}}</h5>
 
 		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
-		<form ng-submit="contribute(username, amount, bounties.id)">
-		Username: <input type="text" ng-model="username" placeholder="Username"/><br />
-		Amount: <input type="integer" ng-model="amount" placeholder="Amount to Contribute"/><br />
+		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)">
+		Username: <input type="text" ng-model="username[$index]" placeholder="Username"/><br />
+		Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/><br />
 		<button type="submit">contribute</button>
 		</form>
 		<br>

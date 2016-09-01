@@ -1,21 +1,24 @@
 <div ng-controller='homeController' ng-init="getBounties()">
-<button type="button"  ng-click="getBounties()">get bounties!!</button>
-	<h2>Current Bounties</h2>
-	<div ng-repeat="bounties in data | orderBy:'$index':true">
-		<h4>{{bounties.name}}</h4>
-		<h5>{{bounties.wanted}}</h5>
-		<h5>{{bounties.description}}</h5>
-		<h5>{{bounties.timeConstraint}}</h5>
-		<h5>{{bounties.amount}}</h5>
-
-		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+	<div class="container">
+	<h1>Current Bounties</h1>
+	<div>
+	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true">
+		<h1 id='bountyName'>{{bounties.name}}</h1>
+		<h3>Wanted: {{bounties.wanted}}</h3>
+		<h5>Description: {{bounties.description}}</h5>
+		<h3>Time Constraint: {{bounties.timeConstraint}}</h3>
+		<div class="projectbuttons">
+		<br/>
 		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)">
-		Username: <input type="text" ng-model="username[$index]" placeholder="Username"/><br />
-		Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/><br />
-		<button type="submit">contribute</button>
+		<h4>Username: <input type="text" ng-model="username[$index]" placeholder="Username"/> </h4>
+		<h4>Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/></h4>
+		<button type="submit">CONTRIBUTE!</button>
+		<h1>${{bounties.amount}}</h1>
+		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+	</div>	
 		</form>
-		<br>
-
+	</div>
+	</div>
 	</div>
 </div>
 

@@ -2,11 +2,10 @@ angular.module('makeitso.home', [])
 
 	.controller('homeController', function($scope, $http){
 		
-		$scope.data = [];
+		$scope.data = {};
 
 		$scope.getBounties = function(){
 			console.log("getBounties() called!!!!")
-
 
 			$http({
      			'method': 'GET',
@@ -16,7 +15,7 @@ angular.module('makeitso.home', [])
 			.success(function(response){
 				
 				$scope.data = response;
-				console.log("Success!!!! scope.data: ", $scope.data);
+				console.log("Success loading bounties!!!! scope.data: ", $scope.data);
 
 
 			}).error(function(error){
@@ -26,11 +25,10 @@ angular.module('makeitso.home', [])
 		}	
 
 		$scope.values = {};
-		$scope.contribute = function(values, id){
-			$scope.values.username = values.username;
-			$scope.values.amount = values.amount;
+		$scope.contribute = function(username, amount, id){
+			$scope.values.username = username;
+			$scope.values.amount = amount;
 			$scope.values.project_id = id;
-
  			var stringifiedScope = JSON.stringify($scope.values);
 			$http({
 				'method': 'POST',

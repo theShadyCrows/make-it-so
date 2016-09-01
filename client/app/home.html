@@ -9,33 +9,11 @@
 		<h5>{{bounties.amount}}</h5>
 
 		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
-  	<ng-focus>
-		<form ng-submit="contribute(values, bounties.id)">
-		Username: <input type="text" ng-model="values.username" placeholder="Username" autofocus/><br />
-		Amount: <input type="integer" ng-model="values.amount" placeholder="Amount to Contribute" autofocus/><br />
-		</ng-focus>
+		<form ng-submit="contribute(username, amount, bounties.id)">
+		Username: <input type="text" ng-model="username" placeholder="Username"/><br />
+		Amount: <input type="integer" ng-model="amount" placeholder="Amount to Contribute"/><br />
+		<button type="submit">contribute</button>
 		</form>
-		<button type="submit" ng-click="contribute(values, bounties.id)">contribute</button>
-
-
-		<!-- ng controller = pledge controller -->
-			<!-- in pledge controller:
-
-				GET request to display plege total amount on pledges table
-					attached to showTotal(bounties.id)
-				POST request to edit total amount on pledges table
-					attached to updateBounty(bounties.id, user.id)
-					user.id might be sent automagically
-					
-
-
-			 -->
-		<!-- where total info goes -->
-		<!-- <form ng-submit="submit(user)" class="form"> -->
-			
-			<!-- <input type="text" placeholder="pledge"/><br /> -->
-
-		<!-- </form> -->
 		<br>
 
 	</div>

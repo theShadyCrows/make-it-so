@@ -48,24 +48,25 @@ angular.module('makeitso.home', [])
 		}
 
 		//CLAIM FUNCTION 1
-		// $scope.remove = {};
-		// $scope.claim = function(project_id){
-		// 	$scope.remove.project_id = project_id;
-		// 	console.log('this is sendable:', $scope.remove.project_id);
-		// 	$http({
-		// 		'method': 'DELETE',
-		// 		'url': "/project",
-		// 		'Content-Type': 'application/json',
-		// 		'data': $scope.remove.project_id
-		// 	})
-		// 	.then(function(response){
-		// 		console.log('project is deleted!',response);
-		// 		$scope.getBounties();
-		// 	})
-		// 	.catch(function(error){
-		// 		console.log(error);
-		// 	})
-		// }
+		$scope.remove = {};
+		$scope.claim = function(projectId){
+			$scope.remove.projectId = projectId;
+			var sendable = JSON.stringify($scope.remove);
+			console.log('this is sendable:', sendable);
+			$http({
+				method: 'DELETE',
+				url: "/project/" + projectId,
+				headers: {'Content-Type': 'application/json,charset=utf-8'},
+				params: sendable
+			})
+			.then(function(response){
+				console.log('project is deleted!',response);
+				$scope.getBounties();
+			})
+			.catch(function(error){
+				console.log('there was an error!',error);
+			})
+		}
 
 //CLAIM FUNCTION 2
 // $scope.remove = {};
@@ -81,14 +82,14 @@ angular.module('makeitso.home', [])
 // };
 
 //CLAIM FUNCTION 3
-		$scope.claim = function(id){
-			$http.delete('/project', id)
-			.then(function(response){
-				console.log('project is deleted!',response);
-			})
-			.catch(function(error){
-				console.log(error);
-			})
-		}
+		// $scope.claim = function(id){
+		// 	$http.delete('/project', id)
+		// 	.then(function(response){
+		// 		console.log('project is deleted!',response);
+		// 	})
+		// 	.catch(function(error){
+		// 		console.log(error);
+		// 	})
+		// }
 
 	})

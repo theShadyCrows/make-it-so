@@ -7,11 +7,19 @@ body {
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
 
+h1 {
+    margin-bottom: 5px; 
+    margin-top: 1px;
+    margin-left: 18px;
+}
+
 #title {
    font-family: 'Megrim', cursive;
    font-weight: bold;
-   padding: 10px; 
+   padding-left: 20px; 
    font-size: 56px;
+   margin-top: 10px;
+   margin-bottom: 8px;
 }
 
 #bountyName {
@@ -37,6 +45,12 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+h4 {
+    font-size: 15px;
+
+
 }
 
 a:hover {
@@ -73,7 +87,7 @@ li a:hover {
   position: relative;
   width: 100%;
   max-width: 960px;
-  margin: 0 auto;
+/*  margin: 0 auto;*/
   padding: 20px;
   box-sizing: border-box; }
 

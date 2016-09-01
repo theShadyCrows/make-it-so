@@ -6,7 +6,7 @@
 		<h1 id='bountyName'>{{bounties.name}}</h1>
 		<h3>Wanted: {{bounties.wanted}}</h3>
 		<h5>Description: {{bounties.description}}</h5>
-		<h3>Time Constraint: {{bounties.timeConstraint}}</h3>
+		<h3>Time Constraint: {{bounties.timeConstraint | date: 'longDate'}}</h3>
 		<div class="projectbuttons">
 		<br/>
 		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)">

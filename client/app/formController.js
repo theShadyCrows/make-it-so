@@ -1,6 +1,6 @@
 angular.module('makeitso.form', [])
 
-.controller('formController', function ($scope, $http) {
+.controller('formController', function ($scope, $http, $window) {
 
  $scope.user = {};
 
@@ -29,6 +29,7 @@ angular.module('makeitso.form', [])
      'data': stringifiedScope
    })
    .then(function() {
+    $window.location.href = '/';
      console.log('user information submitted successfully');
    })
    .catch(function() {

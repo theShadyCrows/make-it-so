@@ -22,10 +22,15 @@
   },
   "homepage": "https://github.com/alexwade13/make-it-so#readme",
   "dependencies": {
+    "angular-animate": "^1.5.8",
+    "angular-touch": "^1.5.8",
     "bluebird": "^3.4.3",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.0",
+    "bootstrap": "^3.3.7",
+    "css": "^2.2.1",
     "express": "^4.14.0",
+    "jquery": "^3.1.0",
     "knex": "^0.11.10",
     "mysql": "^2.11.1"
   }

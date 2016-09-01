@@ -1,24 +1,66 @@
 <div ng-controller="formController">
 
+
  <!-- the novalidate stops the browser from imposing any built-in validation -->
- <form ng-submit="submit(user)" class="form" novalidate>
-   Name: <input type="text" ng-model="user.username" placeholder="username"/><br />
+ <form class="container pure-form pure-form-aligned" id="submitForm" ng-submit="submit(user)" novalidate>
+   <fieldset>
+
+   <div class="pure-control-group">
+   <label for="Name">Name: </label> 
+   <input type="text" id="name" ng-model="user.username" placeholder="Username"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="email">Email: </label> 
+   <input type="text" id="name" ng-model="user.email" placeholder="Email"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="ProjectName">Project Name: </label> 
+   <input type="text" id="ProjectName" ng-model="user.projectName" placeholder="Project Name"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="timeConstraint">Time Constraint: </label> 
+   <input type="date" id="timeConstraint" ng-model="user.timeConstraint" placeholder="Time Constraint"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="wanted">Wanted: </label> 
+   <input type="text" id="Wanted" ng-model="user.wanted" placeholder="Wanted"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="descripton">Description: </label> 
+   <input type="text" id="descripton" ng-model="user.description" placeholder="Description"/>
+   </div>
+
+   <div class="pure-control-group">
+   <label for="pledge">Pledge: </label> 
+   <input type="number" id="pledge" ng-model="user.pledge" placeholder="Pledge"/>
+   </div>
 
    <!-- do validation for correct email format below here if/when email is included -->
-   E-mail: <input type="email" ng-model="user.email" placeholder="email"/><br /> 
+<!--    <label for="email">E-mail:</label> 
+   <br/>
+   <input name="email" id="email" type="email" ng-model="user.email" placeholder="email"/><br/> 
    
-   Project Name: <input type="text" ng-model="user.projectName" placeholder="project"/><br />
+   <label>Project Name: </label>
+   <input type="text" ng-model="user.projectName" placeholder="project"/><br />
+   
    Time Constraint: <input type="text" ng-model="user.timeConstraint" placeholder="time constraint"/><br />
-   Wanted: <input type="text" ng-model="user.wanted" placeholder="wanted"/><br />
-   Description: <input type="text" ng-model="user.description" placeholder="description"/><br />
    
-   <!-- this should be a $ amount...currency input type? -->
-   Pledge: $<input type="text" ng-model="user.pledge" placeholder="pledge"/><br />
+   Wanted: <input type="text" ng-model="user.wanted" placeholder="wanted"/><br />
+   
+   Description: <input type="text" ng-model="user.description" placeholder="description"/><br />
+ 
+   Pledge: $<input type="text" ng-model="user.pledge" placeholder="pledge"/><br /> -->
    
    <br />
    <button type="submit">
        Make It So!
    </button>
+   </fieldset>
  </form>
 
 </div>

@@ -155,10 +155,7 @@ router.post('/pledges', function (req, res) {
 });
 
 router.delete('/project/:projectId', function (req, res) {
-	console.log('in delete with request:', req.body)
-	console.log('req.params:', req.params);
 	console.log('req.params.projectId:', req.params.projectId)
-	// console.log('proj id:', projectId)
   db.knex('Projects').where({
    "id": req.params.projectId 
   }).del().then(function(x){

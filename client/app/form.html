@@ -2,41 +2,44 @@
 
 
  <!-- the novalidate stops the browser from imposing any built-in validation -->
- <form class="container pure-form pure-form-aligned" id="submitForm" ng-submit="submit(user)" novalidate>
+   <div class="container">
+      <h1 class="topOfPage">Create a Bounty</h1>
+   <div>
+   <form class="bountyForm pure-form pure-form-aligned" id="submitForm" ng-submit="submit(user)" novalidate>
    <fieldset>
 
    <div class="pure-control-group">
-   <label for="Name">Name: </label> 
+   <label class="leftLabel" for="Name">Username: </label> 
    <input type="text" id="name" ng-model="user.username" placeholder="Username"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="email">Email: </label> 
-   <input type="text" id="name" ng-model="user.email" placeholder="Email"/>
+   <label class="leftLabel" for="email">Email: </label> 
+   <input type="text" id="email" ng-model="user.email" placeholder="Email"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="ProjectName">Project Name: </label> 
+   <label class="leftLabel" for="ProjectName">Project Name: </label> 
    <input type="text" id="ProjectName" ng-model="user.projectName" placeholder="Project Name"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="timeConstraint">Time Constraint: </label> 
+   <label class="leftLabel" for="timeConstraint">Time Constraint: </label> 
    <input type="date" id="timeConstraint" ng-model="user.timeConstraint" placeholder="Time Constraint"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="wanted">Wanted: </label> 
+   <label class="leftLabel" for="wanted">Wanted: </label> 
    <input type="text" id="Wanted" ng-model="user.wanted" placeholder="Wanted"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="descripton">Description: </label> 
+   <label class="leftLabel" for="descripton">Description: </label> 
    <input type="text" id="descripton" ng-model="user.description" placeholder="Description"/>
    </div>
 
    <div class="pure-control-group">
-   <label for="pledge">Pledge: </label> 
+   <label class="leftLabel" for="pledge">Pledge: </label> 
    <input type="number" id="pledge" ng-model="user.pledge" placeholder="Pledge"/>
    </div>
 
@@ -63,6 +66,8 @@
    </fieldset>
  </form>
 
+</div>
+</div>
 </div>
  </body>
 </html>

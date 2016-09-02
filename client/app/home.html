@@ -1,6 +1,6 @@
 <div ng-controller='homeController' ng-init="getBounties()">
 	<div class="container">
-	<h1>Current Bounties</h1>
+	<h1 class="topOfPage">Current Bounties</h1>
 	<div>
 	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true">
 		<h1 id='bountyName'>{{bounties.name}}</h1>
@@ -9,12 +9,30 @@
 		<h3>Time Constraint: {{bounties.timeConstraint | date: 'longDate'}}</h3>
 		<div class="projectbuttons">
 		<br/>
-		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)">
-		<h4>Username: <input type="text" ng-model="username[$index]" placeholder="Username"/> </h4>
-		<h4>Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/></h4>
+		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)" class="pure-form pure-form-aligned">
+		<fieldset>
+
+
+		<div class="pure-control-group">
+		<label for="name">Username: </label> 
+		<input type="text" id="name" ng-model="username[$index]"  placeholder="Username"/>
+		</div>
+
+
+		<div class="pure-control-group">
+		<label for="amount">Amount: </label> 
+		<input type="integer" id="amount" ng-model="amount[$index]"  placeholder="Amount"/>
+		</div>
+<!-- THIS IS HERE IF YOU WANT TO SWITCH IT BACK TO THE OLD STYLE!
+ 		<h4>Username: <input type="text" ng-model="username[$index]" placeholder="Username"/> </h4>
+		<h4>Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/></h4> 
+-->
 		<button type="submit">CONTRIBUTE!</button>
+		</fieldset>
 		<h1 class='num'>{{bounties.amount | currency:"$":0}}</h1>
+		<br/>
 		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+			
 	</div>	
 		</form>
 	</div>

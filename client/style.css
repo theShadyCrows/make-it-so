@@ -39,6 +39,10 @@ li {
     float: left;
 }
 
+.num {
+    font-family: 'PT Sans', sans-serif;
+}
+
 li a {
     display: block;
     color: white;

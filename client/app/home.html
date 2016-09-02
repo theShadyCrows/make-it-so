@@ -13,7 +13,7 @@
 		<h4>Username: <input type="text" ng-model="username[$index]" placeholder="Username"/> </h4>
 		<h4>Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/></h4>
 		<button type="submit">CONTRIBUTE!</button>
-		<h1>${{bounties.amount}}</h1>
+		<h1 class='num'>{{bounties.amount | currency:"$":0}}</h1>
 		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
 	</div>	
 		</form>

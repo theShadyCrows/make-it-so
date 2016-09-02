@@ -1,5 +1,8 @@
 <div ng-controller='homeController' ng-init="getBounties()">
 	<div class="container">
+  <!-- TOP OF PAGE CLASS BELOW ADJUSTS THE FONT IN CSS
+     FEEL FREE TO CHANGE IT BACK IF YOU PREFER THE OTHER FONT
+ -->
 	<h1 class="topOfPage">Current Bounties</h1>
 	<div>
 	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true">

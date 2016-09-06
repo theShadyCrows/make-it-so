@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html ng-app='makeitso'>
   <head>
-    <meta charset="utf-8" />
-    <title>Makeit.so</title>
+    <meta charset="utf-8"/>
+    <title>Makeit.so</title> <!-- the first link is how we brought Bootstrap into your project -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- this second link is for bringing in 'pure' styling for our forms, which makes them look pretty and aligned -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/forms-min.css">
+    <!-- this third link references out style sheet -->
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <!-- this fourth link references the fonts we got from google, megrim and raleway -->
     <link href="https://fonts.googleapis.com/css?family=Megrim|Raleway|PT+Sans" rel="stylesheet">
 
   </head>
-  <body>
+  <body> <!-- logo image -->
     <h1 id="title"><a href="/">Makeit.so</a></h1>
 
-    <ul>
+    <ul><!--  nav bar as list, the  -->
         <li><a href="#/form">Create a Bounty</a></li>
         <li><a href="#/home">Current Bounties</a></li>
 <!--         <li>
         </li> -->
+        <!-- ng-model searchbar: can search bounties because of the piping in home.html's ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar"> 
+        the '| filter:searchbar' is what makes the bounties searchable-->
         <li id="searchbar">
           <img id="mag" src="/assets/search-12-24.png"/>
           <input ng-model="searchbar">
         </li>
 
-
-<!--         <li style="float:right"><a class="active" href="#about">About Reverse Crowdfunding</a></li> -->
       </ul>
 
       <br>
@@ -31,11 +34,11 @@
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
     
+    <!-- load angular, angular-route, jquery, bootstrap, and our app and home controllers -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script> 
     <script src="//code.angularjs.org/1.2.1/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="app/factory.js"></script>
     <script src="app/formController.js"></script>
     <script src="app/homeController.js"></script>
     <script src="app.js"></script>

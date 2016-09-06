@@ -1,5 +1,5 @@
 angular.module('makeitso.form', [])
-
+// controller for bounty submission form page, aka form html
 .controller('formController', function ($scope, $http, $window) {
 
  $scope.user = {};
@@ -9,6 +9,7 @@ angular.module('makeitso.form', [])
 // converts the object to JSON to be passed to the Express server & the database
 
  $scope.submit = function(data) {
+  //each piece of form data is saved to the $scope.user object on the server
    $scope.user.username = data.username;
    $scope.user.email = data.email;
    $scope.user.projectName = data.projectName;
@@ -18,10 +19,10 @@ angular.module('makeitso.form', [])
    $scope.user.pledge = data.pledge;
  
    console.log('*** user info in $scope - - >', $scope.user);
- 
+    // stringify the scope.user object to be sent to the server
    var stringifiedScope = JSON.stringify($scope.user);
    console.log(' -- stringifiedScope -->', stringifiedScope);
-
+   // http post request with stringifiedScope data
    $http({
      'method': 'POST',
      'url': '/project',
@@ -29,14 +30,15 @@ angular.module('makeitso.form', [])
      'data': stringifiedScope
    })
    .then(function() {
+    //after the the information is successfully posted to the database,
+    //reload the home page
     $window.location.href = '/';
      console.log('user information submitted successfully');
    })
    .catch(function() {
+    // or console log that the information was not successfully sent and received
      console.log('user information not submitted');
    });
-
- // should there be some code here to reset the form?
 
  };
 });

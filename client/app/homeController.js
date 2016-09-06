@@ -33,9 +33,9 @@ angular.module('makeitso.home', [])
 			console.log(stringifiedScope);
 			$http({
 				'method': 'POST',
-     		'url': '/pledges',
-     		'Content-Type': 'application/json',
-     		'data': stringifiedScope
+     			'url': '/pledges',
+     			'Content-Type': 'application/json',
+     			'data': stringifiedScope
    			})
 			.then(function(){
 				console.log('post to pledges went through, all vals:', stringifiedScope);

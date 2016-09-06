@@ -57,7 +57,7 @@ router.get('/users', function (req, res) {
 /*
   returns an array of all the keywords
 
-Unused function, did not implement keywords.
+  Unused function, did not implement keywords.
 */
 router.get('/keywords', function (req, res) {
   Keywords.reset().fetch()

@@ -8,10 +8,6 @@ app.set('port', 3000);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json())
-// configure our server with all the middleware and routing
-// require('./config/middleware.js')(app, express);
-// require('./routes.js')(app, express);
-
 
 app.use(express.static(__dirname + '/../client'));
 

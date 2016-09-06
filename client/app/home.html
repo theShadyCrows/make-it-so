@@ -1,45 +1,45 @@
 <div ng-controller='homeController' ng-init="getBounties()">
 	<div class="container">
-  <!-- TOP OF PAGE CLASS BELOW ADJUSTS THE FONT IN CSS
-     FEEL FREE TO CHANGE IT BACK IF YOU PREFER THE OTHER FONT
- -->
+
 	<h1 class="topOfPage">Current Bounties</h1>
-	<div>
-	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
-		<h1 id='bountyName'>{{bounties.name}}</h1>
-		<h3><span class="bold">Wanted:</span> {{bounties.wanted}}</h3>
-		<h5><span class="bold">Description:</span> {{bounties.description}}</h5>
-		<h3><span class="bold">Time Constraint:</span> {{bounties.timeConstraint | date: 'longDate'}}</h3>
-		<div class="projectbuttons">
-		<br/>
-		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)" class="pure-form pure-form-aligned">
-		<fieldset>
+		<div>
+			<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
+			<!-- orderBy most recent, and the filter:searchbar hooks up to the searchbar in index.html -->
+				<h1 id='bountyName'>{{bounties.name}}</h1>
+				<h3><span class="bold">Wanted:</span> {{bounties.wanted}}</h3>
+				<h5><span class="bold">Description:</span> {{bounties.description}}</h5>
+				<h3><span class="bold">Time Constraint:</span> {{bounties.timeConstraint | date:'longDate'}}</h3>
+				
+				<!-- projectbuttons are on the right side of the repeated projects -->
+				<div class="projectbuttons">
+					<br/>
+					<!-- $index was used in the contribute form and ng-models to ensure that the form input (name or amount) was not showing up inside every input box repeated throughout the main page. The input will now only attach to the project at the index where the user is typing. It is NOT required for bounties.id, as that information is persisted through the database. -->
+					<form ng-submit="contribute(username[$index], amount[$index], bounties.id)" class="pure-form pure-form-aligned">
+						<fieldset>
+						<!-- 'Pure CSS' is imported into index.html. It adjusts the form styling. The beginning of the fieldset for Pure is indicated above and each piece its manipulting is in a div below with a class of pure-control-group. The submit classes include pure styling, as well.-->
+					
+							<div class="pure-control-group">
+								<label for="name">Username: </label> 
+								<input type="text" id="name" ng-model="username[$index]"  placeholder="Username"/>
+							</div>
 
 
-		<div class="pure-control-group">
-		<label for="name">Username: </label> 
-		<input type="text" id="name" ng-model="username[$index]"  placeholder="Username"/>
+							<div class="pure-control-group">
+								<label for="amount">Amount: </label> 
+								<input type="integer" id="amount" ng-model="amount[$index]"  placeholder="Amount"/>
+							</div>
+
+							<button type="submit">CONTRIBUTE!</button>
+						</fieldset>
+						<h1 class='num'>{{bounties.amount | currency:"$":0}}</h1>
+						<br/>
+						<!-- button below triggers DELETE request in homeController.js by passing in the given bounty id to the claim function. It does not store the data anywhere. You can add this functionality to your db, if you choose. -->
+						<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>		
+					</form>
+				</div>	
+			</div>
 		</div>
-
-
-		<div class="pure-control-group">
-		<label for="amount">Amount: </label> 
-		<input type="integer" id="amount" ng-model="amount[$index]"  placeholder="Amount"/>
-		</div>
-<!-- THIS IS HERE IF YOU WANT TO SWITCH IT BACK TO THE OLD STYLE!
- 		<h4>Username: <input type="text" ng-model="username[$index]" placeholder="Username"/> </h4>
-		<h4>Amount: <input type="integer" ng-model="amount[$index]" placeholder="Amount to Contribute"/></h4> 
--->
-		<button type="submit">CONTRIBUTE!</button>
-		</fieldset>
-		<h1 class='num'>{{bounties.amount | currency:"$":0}}</h1>
-		<br/>
-		<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
-			
-	</div>	
-		</form>
-	</div>
-	</div>
 	</div>
 </div>
+
 

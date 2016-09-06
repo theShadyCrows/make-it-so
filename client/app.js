@@ -1,5 +1,4 @@
 angular.module('makeitso', [
-	'makeitso.factory', 
 	'makeitso.form', 
 	'makeitso.home',
 	'ngRoute'
@@ -17,9 +16,4 @@ angular.module('makeitso', [
 			.otherwise({
 				redirectTo: '/home'
 			})
-
-
-
-
-
 	})

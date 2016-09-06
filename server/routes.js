@@ -65,6 +65,18 @@ router.get('/keywords', function (req, res) {
 
 });
 
+/*
+{
+  username:[string],
+  projectName:[string],
+  timeConstraint:[string],
+  wanted:[string],
+  description:[string],
+  pledge:[string]
+}
+NOTE: doesn't send back the id of the project, it instead sends back the id of the newly created pledge
+*/
+
 router.post('/project', function (req, res) {
   console.log("succesful post to projet:", req.body);
   Projects.create({
@@ -72,7 +84,7 @@ router.post('/project', function (req, res) {
     timeConstraint: req.body.timeConstraint,
     wanted: req.body.wanted,
     description: req.body.description
-  }).then(function(attributes){
+  }).then(function(project_attributes){
     db.knex('Users').where({
       "username": req.body.username
     }).select('id').then(function(data){
@@ -80,33 +92,33 @@ router.post('/project', function (req, res) {
       var user_id;
       //if user does not exists
       if (data[0] === undefined){
-        user_id = 1
+        //project id, user id, amount, res
+        db.knex('Users').insert({
+          "username": req.body.username
+        }).then(function(user_id){
+          _createPledge(project_attributes.id, user_id, amount, res)
+        });
       } else {
-        user_id = data[0].id
+        //project id, user id, amount, res
+        _createPledge(project_attributes.id, data[0].id, amount, res)
       }
-      Pledges.create({
-        user_id: user_id,
-        project_id: attributes.id,
-        amount: amount
-      }).then(function(x){
-        res.send(req.body);
-      })
     });
   });
 });
 
+
+
 /*
 {
   username:[string],
-  email:[string]
 }
 */
 router.post('/users', function (req, res) {
   db.knex('Users').insert({
-    "email": req.body.email,
+    // "email": req.body.email,
     "username": req.body.username
   }).then(function(data){
-    console.log("succesful post to users", req.data);
+    console.log("succesful post to users", data);
     res.send(req.body);
   })
 });
@@ -139,20 +151,27 @@ router.post('/pledges', function (req, res) {
   }).select('id').then(function(data){
     var user_id;
     if (data.length !== 0){
-      user_id = data[0].id;
+      _createPledge(req.body.project_id, data[0].id, req.body.amount, res)
     } else {
-      user_id = 1;    
+      db.knex('Users').insert({
+        "username": req.body.username
+      }).then(function(user_id){
+        _createPledge(req.body.project_id, user_id, req.body.amount, res);
+      })
     }
-    db.knex('Pledges').insert({
-      "project_id": req.body.project_id,
-      "user_id": user_id,
-      "amount":req.body.amount
-    }).then(function(pledgeId){
-      console.log(pledgeId);
-      res.send(pledgeId); 
-    })
   })
 });
+
+var _createPledge = function(project_id, user_id, amount, res){
+  db.knex('Pledges').insert({
+    "project_id": project_id,
+    "user_id": user_id,
+    "amount": amount
+  }).then(function(pledgeId){
+    console.log(pledgeId);
+    res.send(pledgeId); 
+  })
+}
 
 router.delete('/project/:projectId', function (req, res) {
 	db.knex('Projects').where({

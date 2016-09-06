@@ -5,7 +5,7 @@
  -->
 	<h1 class="topOfPage">Current Bounties</h1>
 	<div>
-	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true">
+	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
 		<h1 id='bountyName'>{{bounties.name}}</h1>
 		<h3>Wanted: {{bounties.wanted}}</h3>
 		<h5>Description: {{bounties.description}}</h5>

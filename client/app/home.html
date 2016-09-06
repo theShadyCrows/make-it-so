@@ -7,9 +7,9 @@
 	<div>
 	<div class="columns" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
 		<h1 id='bountyName'>{{bounties.name}}</h1>
-		<h3>Wanted: {{bounties.wanted}}</h3>
-		<h5>Description: {{bounties.description}}</h5>
-		<h3>Time Constraint: {{bounties.timeConstraint | date: 'longDate'}}</h3>
+		<h3><span class="bold">Wanted:</span> {{bounties.wanted}}</h3>
+		<h5><span class="bold">Description:</span> {{bounties.description}}</h5>
+		<h3><span class="bold">Time Constraint:</span> {{bounties.timeConstraint | date: 'longDate'}}</h3>
 		<div class="projectbuttons">
 		<br/>
 		<form ng-submit="contribute(username[$index], amount[$index], bounties.id)" class="pure-form pure-form-aligned">

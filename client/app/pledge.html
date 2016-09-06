@@ -1,6 +1,0 @@
-<div ng-controller="pledgeController">
-  <form ng-submit="submitPledge(pledge)" class='form' novalidate>
-    <input type="text" ng-model="pledge.amount" placeholder="Pledge Amount" integer/>
-    <span ng-show="form.$error.integer">Please submit a valid whole dollar amount. Ex.: $20, not $20.50</span>
-    <button type="submit" value="submitPledge">Submit Pledge</button>
-  </form>

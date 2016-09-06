@@ -1,26 +1,23 @@
 angular.module('makeitso.home', [])
 
 	.controller('homeController', function($scope, $http){
-		
+		//scope.data MUST be an array for the $index functionality to work in the home.html form.
 		$scope.data = [];
 
+		//getBounties is the main get request for all bounty data. 
+		//It is used in conjunction with the contribute and claim functions below.
 		$scope.getBounties = function(){
 			console.log("getBounties() called!!!!")
-
 			$http({
      			'method': 'GET',
      			'url': '/projects',
      			'Content-Type': 'application/json'
    			})
 			.success(function(response){
-				
 				$scope.data = response;
 				console.log("Success loading bounties!!!! scope.data: ", $scope.data);
-
-
 			}).error(function(error){
 				console.log(error);
-
 			})		
 		}	
 
@@ -29,16 +26,17 @@ angular.module('makeitso.home', [])
 			$scope.values.username = username;
 			$scope.values.amount = amount;
 			$scope.values.project_id = id;
- 			var stringifiedScope = JSON.stringify($scope.values);
-			console.log(stringifiedScope);
+ 			var stringifiedValues = JSON.stringify($scope.values);
 			$http({
 				'method': 'POST',
-     			'url': '/pledges',
-     			'Content-Type': 'application/json',
-     			'data': stringifiedScope
-   			})
+     		'url': '/pledges',
+     		'Content-Type': 'application/json',
+     		'data': stringifiedValues
+   		})
 			.then(function(){
-				console.log('post to pledges went through, all vals:', stringifiedScope);
+				console.log('post to pledges went through, all vals:', stringifiedValues);
+				//scope.getBounties below refreshes all info on the page 
+				//to account for the pledge added to the given project
 				$scope.getBounties();
 			})
 			.catch(function(error){
@@ -46,23 +44,27 @@ angular.module('makeitso.home', [])
 			});
 		}
 
+		//DELETE functionality below uses params instead of data. 
+		//It needs to + projectId in the url to delete the selected project.
 		$scope.remove = {};
 		$scope.claim = function(projectId){
 			$scope.remove.projectId = projectId;
-			var sendable = JSON.stringify($scope.remove);
-			console.log('this is sendable:', sendable);
+			var stringifiedRemove = JSON.stringify($scope.remove);
+			console.log('this is stringifiedRemove:', stringifiedRemove);
 			$http({
 				method: 'DELETE',
 				url: "/project/" + projectId,
 				headers: {'Content-Type': 'application/json,charset=utf-8'},
-				params: sendable
+				params: stringifiedRemove
 			})
 			.then(function(response){
 				console.log('project is deleted!',response);
+				//call to getBounties below refreshes the info on 
+				//the page to remove the deleted project from the list.
 				$scope.getBounties();
 			})
 			.catch(function(error){
-				console.log('there was an error!',error);
+				console.log('there was an error deleting your project!',error);
 			})
 		}
 	})

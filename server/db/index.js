@@ -4,13 +4,12 @@ var knex = require('knex')({
   client: 'mysql',
   connection: {
     host     : 'mysqlcluster7.registeredsite.com',
-    user     : process.env.username,
-    password : process.env.password,
-    database : process.env.name,
-    // uncomment the below in order to run the server locally, along with the require at the top of the page
-    // user     : dbConfig.username,
-    // password : dbConfig.password,
-    // database : dbConfig.name,
+    // user     : process.env.username,
+    // password : process.env.password,
+    // database : process.env.name,
+    user     : dbConfig.username,
+    password : dbConfig.password,
+    database : dbConfig.name,
     charset  : 'utf8'
   }
 });

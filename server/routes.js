@@ -8,12 +8,11 @@ var Users = require ('./collections/users.js')
 var Keywords = require ('./collections/keywords.js')
 
 /*
-  returns an array of all the projects
+  returns an array of all the projects after attaching an amount to each project
 */
 router.get('/projects', function (req, res) {
   Projects.reset().fetch()
     .then(function(projects) {
-      var finished = [];
       var ret = projects.models;
       //this recurse function is basically a for loop
       //but that waits for the promises to finish before
@@ -30,9 +29,12 @@ router.get('/projects', function (req, res) {
             }
             ret[i].attributes.amount = total
           }
+
+          //this is the for loop functionality
           if (++i < ret.length){
             recurse(i);
           } else {
+            console.log("succesful projects get:", ret);
             res.send(ret)
           }
         })
@@ -47,22 +49,22 @@ router.get('/projects', function (req, res) {
 router.get('/users', function (req, res) {
   Users.reset().fetch()
     .then(function(users) {
+      console.log("succesful users get:", user.models);
       res.send(users.models)
-      console.log("succesful users get:");
     });
-
 });
 
 /*
   returns an array of all the keywords
+
+Unused function, did not implement keywords.
 */
 router.get('/keywords', function (req, res) {
   Keywords.reset().fetch()
     .then(function(keywords) {
+      console.log("succesful keywords get:", keywords.models);
       res.send(keywords.models)
-      console.log("succesful keywords get:");
     });
-
 });
 
 /*
@@ -74,11 +76,12 @@ router.get('/keywords', function (req, res) {
   description:[string],
   pledge:[string]
 }
-NOTE: doesn't send back the id of the project, it instead sends back the id of the newly created pledge
+  Creates a new project and an intial pledge associated with it
+  Doesn't send back the id of the project, it instead sends back the id of the newly created pledge
 */
 
 router.post('/project', function (req, res) {
-  console.log("succesful post to projet:", req.body);
+
   Projects.create({
     name: req.body.projectName,
     timeConstraint: req.body.timeConstraint,
@@ -89,29 +92,34 @@ router.post('/project', function (req, res) {
       "username": req.body.username
     }).select('id').then(function(data){
       var amount = JSON.parse(req.body.pledge);
-      var user_id;
-      //if user does not exists
-      if (data[0] === undefined){
+
+      //if user exists, create a pledges, otherwise create a user then the pledge
+      if (data[0] !== undefined){
+        console.log("succesful post to projects:", project_attributes);
+
         //project id, user id, amount, res
+        _createPledge(project_attributes.id, data[0].id, amount, res)
+        
+      } else {
         db.knex('Users').insert({
           "username": req.body.username
         }).then(function(user_id){
+          console.log("succesful post to projects:", project_attributes);
+
+          //project id, user id, amount, res
           _createPledge(project_attributes.id, user_id, amount, res)
         });
-      } else {
-        //project id, user id, amount, res
-        _createPledge(project_attributes.id, data[0].id, amount, res)
       }
     });
   });
 });
 
-
-
 /*
 {
-  username:[string],
+  username:[string]
 }
+
+  Creates a new user in the database
 */
 router.post('/users', function (req, res) {
   db.knex('Users').insert({
@@ -127,6 +135,8 @@ router.post('/users', function (req, res) {
 {
   word:[string]
 }
+  Creates a new keyword in the database
+  Unused function, did not implement keywords before completion.
 */
 router.post('/keywords', function (req, res) {
   db.knex('Keywords').insert({
@@ -143,6 +153,8 @@ router.post('/keywords', function (req, res) {
   username:[string],
   amount:[int]
 }
+  Creates a new pledge in the database
+  This function is really only used for testing purposes when posting to pledges
 */
 router.post('/pledges', function (req, res) {
 
@@ -150,6 +162,7 @@ router.post('/pledges', function (req, res) {
     "username": req.body.username
   }).select('id').then(function(data){
     var user_id;
+    // if the user exists, create pledge, other wise create user then create pledge
     if (data.length !== 0){
       _createPledge(req.body.project_id, data[0].id, req.body.amount, res)
     } else {
@@ -157,11 +170,15 @@ router.post('/pledges', function (req, res) {
         "username": req.body.username
       }).then(function(user_id){
         _createPledge(req.body.project_id, user_id, req.body.amount, res);
+        console.log("succesful post to pledges")
       })
     }
   })
 });
 
+/*
+  internal function used by post to pledges and to users.
+*/
 var _createPledge = function(project_id, user_id, amount, res){
   db.knex('Pledges').insert({
     "project_id": project_id,
@@ -173,6 +190,9 @@ var _createPledge = function(project_id, user_id, amount, res){
   })
 }
 
+/*
+  currently functionality simply deletes claimed projects instead of storing them anywhere useful
+*/
 router.delete('/project/:projectId', function (req, res) {
 	db.knex('Projects').where({
    "id": req.params.projectId 

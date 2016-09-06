@@ -7,6 +7,7 @@ var knex = require('knex')({
     user     : process.env.username,
     password : process.env.password,
     database : process.env.name,
+    // uncomment the below in order to run the server locally, along with the require at the top of the page
     // user     : dbConfig.username,
     // password : dbConfig.password,
     // database : dbConfig.name,
@@ -57,6 +58,10 @@ db.knex.schema.hasTable('Users').then(function(exists){
   }
 });
 
+
+/*
+  currently unused table of keywords
+*/
 db.knex.schema.hasTable('Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Keywords', function(keyword){
@@ -69,6 +74,9 @@ db.knex.schema.hasTable('Keywords').then(function(exists){
   }
 });
 
+/*
+  another unused table
+*/
 db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Project-Keywords', function(pkey){

@@ -1,13 +1,13 @@
 <div ng-controller="formController">
 
 
- <!-- the novalidate stops the browser from imposing any built-in validation -->
    <div class="container">
       <!-- TOP OF PAGE CLASS BELOW ADJUSTS THE FONT IN CSS
            FEEL FREE TO CHANGE IT BACK IF YOU PREFER THE OTHER FONT
        -->
       <h1 class="topOfPage">Create a Bounty</h1>
    <div>
+ <!-- the novalidate stops the browser from imposing any built-in validation -->
    <form class="bountyForm pure-form pure-form-aligned" id="submitForm" ng-submit="submit(user)" novalidate>
    <fieldset>
 
@@ -26,10 +26,6 @@
    <input type="text" id="ProjectName" ng-model="user.projectName" placeholder="Project Name"/>
    </div>
 
-   <div class="pure-control-group">
-   <label class="leftLabel" for="timeConstraint">Time Constraint: </label> 
-   <input type="date" id="timeConstraint" ng-model="user.timeConstraint" placeholder="Time Constraint"/>
-   </div>
 
    <div class="pure-control-group">
    <label class="leftLabel" for="wanted">Wanted: </label> 
@@ -41,6 +37,11 @@
    <input type="text" id="descripton" ng-model="user.description" placeholder="Description"/>
    </div>
 
+   <div class="pure-control-group">
+   <label class="leftLabel" for="timeConstraint">Time Constraint: </label> 
+   <input type="date" id="timeConstraint" ng-model="user.timeConstraint" placeholder="Time Constraint"/>
+   </div>
+   
    <div class="pure-control-group">
    <label class="leftLabel" for="pledge">Pledge: </label> 
    <input type="number" id="pledge" ng-model="user.pledge" placeholder="Pledge"/>
@@ -63,7 +64,7 @@
    Pledge: $<input type="text" ng-model="user.pledge" placeholder="pledge"/><br /> -->
    
    <br />
-   <button type="submit">
+   <button type="submit" id="makeitso-button">
        Make It So!
    </button>
    </fieldset>

@@ -146,6 +146,7 @@ label {
   max-width: 860px;
 }
 
+
 #searchbar{
   float:right;
   padding-top:5px;
@@ -156,4 +157,30 @@ label {
 #mag{
   padding-right: 4px;
   padding-bottom: 3px;
+}
+
+#timeConstraint {
+  position: relative;
+  width: 22.8%;
+  /*max-width: 960px;*/
+  margin: 0 auto;
+  /*padding: 20px;*/
+  /*box-sizing: border-box;*/
+}
+
+
+#makeitso-button {
+  background-color: #FF8C2D;
+  color: #FFFFFF;
+  box-shadow: none;
+  border: none;
+  font-size: 26px;
+  padding: 16px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#makeitso-button:hover{
+    background-color: #FFFFFF;
+    color: #FF8C2D;
 }

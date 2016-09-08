@@ -30,6 +30,8 @@ var knex = require('knex')({
 
 var db = require('bookshelf')(knex);
 
+var db = require('bookshelf')(knex);
+
 db.knex.schema.hasTable('Projects').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Projects', function(project){
@@ -49,8 +51,8 @@ db.knex.schema.hasTable('Pledges').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Pledges', function(pledge){
       pledge.increments('id').primary();
-      pledge.integer('user_id').references(user.id);
-      pledge.integer('project_id').references(project.id);
+      pledge.integer('user_id');
+      pledge.integer('project_id');
       pledge.integer('amount');
       pledge.timestamps();
     }).then(function(table){
@@ -95,8 +97,8 @@ db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Project-Keywords', function(pkey){
       pkey.increments('id').primary();
-      // pkey.integer('keyword_id').references(keyword.id);
-      // pkey.integer('project_id').references(project.id);
+      pkey.integer('keyword_id');
+      pkey.integer('project_id');
     }).then(function(table){
       console.log('Created Project-Keyword Table', table);
     });  

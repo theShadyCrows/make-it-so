@@ -14,7 +14,6 @@ angular.module('makeitso', [
   	views: {
   		'': {
 	  		templateUrl: 'app/views/home.html',
-				// templateUrl: 'app/home.html',
 				controller: 'homeController'
   		},
   		'widgets@home': {
@@ -26,8 +25,7 @@ angular.module('makeitso', [
   })
   .state('form', {
   	url: '/form',
-		// templateUrl: 'app/views/form.html',
-		templateUrl: 'app/form.html',
+		templateUrl: 'app/views/form.html',
 		controller: 'formController'
   });
 });

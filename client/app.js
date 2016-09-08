@@ -1,19 +1,47 @@
 angular.module('makeitso', [
 	'makeitso.form', 
 	'makeitso.home',
-	'ngRoute'
-	])
-	.config(function($routeProvider, $httpProvider){
-		$routeProvider
-			.when('/form', {
-				templateUrl: 'app/form.html',
-				controller: 'formController'
-			})
-			.when('/home', {
-				templateUrl: 'app/home.html',
+	'ui.router'
+	// 'ngRoute'
+])
+
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/home');
+
+  $stateProvider
+  .state('home', {
+  	url: '/home',
+  	views: {
+  		'': {
+	  		templateUrl: 'app/views/home.html',
 				controller: 'homeController'
-			})
-			.otherwise({
-				redirectTo: '/home'
-			})
-	})
+  		},
+  		'widgets@home': {
+  			url: '/home',
+  			templateUrl: 'app/views/widgets.html',
+				controller: 'homeController'
+  		}
+  	}
+  })
+  .state('form', {
+  	url: '/form',
+		templateUrl: 'app/views/form.html',
+		controller: 'formController'
+  });
+});
+
+// .config(function($routeProvider, $httpProvider){
+// 	$routeProvider
+// 	.when('/home', {
+// 		templateUrl: 'app/views/home.html',
+// 		// templateUrl: 'app/home.html',
+// 		controller: 'homeController'
+// 	})
+// 	.when('/form', {
+// 		templateUrl: 'app/form.html',
+// 		controller: 'formController'
+// 	})
+// 	.otherwise({
+// 		redirectTo: '/home'
+// 	});
+// });

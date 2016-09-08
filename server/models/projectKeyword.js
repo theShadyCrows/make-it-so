@@ -16,4 +16,4 @@ var ProjectKeyword = db.Model.extend({
   hasTimestamps: false,
 });
 
-module.exports = Project-Keyword;
+module.exports = ProjectKeyword;

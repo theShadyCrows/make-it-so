@@ -1,4 +1,18 @@
-var dbConfig = require("./dbConfig.js")
+var dbConfig = require("./dbConfig.js");
+
+// console.log('dbConfig.username: ', dbConfig.username);
+// console.log('dbConfig.password: ', dbConfig.password);
+// console.log('dbConfig.name: ', dbConfig.name);
+
+/*
+  dbConfig: {
+    ip: "mysqlcluster7.registeredsite.com",
+    alias: "mysqlcluster7",
+    username: "makeitsoadmin",
+    password: "!Qaz2wsx3edc",
+    name: "makeitso"
+  }
+*/
 
 
 
@@ -80,6 +94,7 @@ db.knex.schema.hasTable('Keywords').then(function(exists){
 /*
   another unused table
 */
+// console.log('keyword.id: ', keyword.id)
 db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Project-Keywords', function(pkey){

@@ -7,6 +7,17 @@ var Pledges = require ('./collections/pledges.js')
 var Users = require ('./collections/users.js')
 var Keywords = require ('./collections/keywords.js')
 
+//twitter
+
+var Twitter = require('twitter');
+ 
+var client = new Twitter({
+  consumer_key: 'HZvyY8LukfKyHautwZURhnfzV',
+  consumer_secret: 'mD5pgI2ViOmLHGKWNnzQ7KerUypZHzH6d4k196npCNSZNEitHS',
+  access_token_key: '773734795457269760-x9nikKiJB05r7HvfSTHHpi39rVy6Oex',
+  access_token_secret: 'zGuJGNBRMfLxfPBW4rGhCMOWWUjYVe7BSuFyxVC52OWj7'
+});
+
 /*
   returns an array of all the projects after attaching an amount to each project
 */
@@ -44,6 +55,14 @@ router.get('/projects', function (req, res) {
       }
       recurse(0);
     })
+
+
+
+
+
+
+
+
   });
 
 /*
@@ -94,11 +113,13 @@ router.post('/project', function (req, res) {
     db.knex('Users').where({
       "username": req.body.username
     }).select('id').then(function(data){
+
+      //console.log('*****DATA!',data)
       var amount = JSON.parse(req.body.pledge);
 
       //if user exists, create a pledges, otherwise create a user then the pledge
       if (data[0] !== undefined){
-        console.log("succesful post to projects:", project_attributes);
+       // console.log("$$$succesful post to projects:", project_attributes);
 
         //project id, user id, amount, res
         _createPledge(project_attributes.id, data[0].id, amount, res)
@@ -107,13 +128,22 @@ router.post('/project', function (req, res) {
         db.knex('Users').insert({
           "username": req.body.username
         }).then(function(user_id){
-          console.log("succesful post to projects:", project_attributes);
+         // console.log("$$succesful post to projects:", project_attributes);
 
           //project id, user id, amount, res
           _createPledge(project_attributes.id, user_id, amount, res)
         });
       }
-    });
+    })
+    .then(function () {
+      client.post('statuses/update', {status: 'NEW BOUNTY CREATED, CHECK IT OUT!'},  function(error, tweet, response) {
+      if(error) throw error;
+      console.log('YO!!!!!');
+      console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
+      console.log('RESPONSEEEEEE',response);  // Raw response object. 
+});
+
+    })
   });
 });
 
@@ -129,7 +159,7 @@ router.post('/users', function (req, res) {
     // "email": req.body.email,
     "username": req.body.username
   }).then(function(data){
-    console.log("succesful post to users", data);
+   // console.log("succesful post to users", data);
     res.send(req.body);
   })
 });

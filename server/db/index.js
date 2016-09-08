@@ -1,18 +1,22 @@
 var dbConfig = require("./dbConfig.js")
 
+
+
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : 'mysqlcluster7.registeredsite.com',
+    host     : "mysqlcluster14.registeredsite.com",
     // user     : process.env.username,
     // password : process.env.password,
     // database : process.env.name,
-    user     : dbConfig.username,
-    password : dbConfig.password,
-    database : dbConfig.name,
+    user     : "shadyadmin",
+    password : "!Qaz2wsx3edc",
+    database : "shadycrows",
     charset  : 'utf8'
   }
 });
+
+
 
 var db = require('bookshelf')(knex);
 
@@ -80,8 +84,8 @@ db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Project-Keywords', function(pkey){
       pkey.increments('id').primary();
-      pkey.integer('keyword_id').references(keyword.id);
-      pkey.integer('project_id').references(project.id);
+      // pkey.integer('keyword_id').references(keyword.id);
+      // pkey.integer('project_id').references(project.id);
     }).then(function(table){
       console.log('Created Project-Keyword Table', table);
     });  

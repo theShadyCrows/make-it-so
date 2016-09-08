@@ -1,15 +1,36 @@
-var dbConfig = require("./dbConfig.js")
+var dbConfig = require("./dbConfig.js");
+
+// console.log('dbConfig.username: ', dbConfig.username);
+// console.log('dbConfig.password: ', dbConfig.password);
+// console.log('dbConfig.name: ', dbConfig.name);
+
+/*
+  dbConfig: {
+    ip: "mysqlcluster7.registeredsite.com",
+    alias: "mysqlcluster7",
+    username: "makeitsoadmin",
+    password: "!Qaz2wsx3edc",
+    name: "makeitso"
+  }
+*/
 
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : 'mysqlcluster7.registeredsite.com',
+    // host     : 'mysqlcluster7.registeredsite.com',
+    host     : 'mysqlcluster14.registeredsite.com',
     // user     : process.env.username,
     // password : process.env.password,
     // database : process.env.name,
-    user     : dbConfig.username,
-    password : dbConfig.password,
-    database : dbConfig.name,
+    // user     : dbConfig.username,
+    // password : dbConfig.password,
+    // database : dbConfig.name,
+    // user     : 'makeitsoadmin',
+    // password : '!Qaz2wsx3edc',
+    // database : 'makeitso',
+    user     : 'shadyadmin',
+    password : '!Qaz2wsx3edc',
+    database : 'shadycrows',
     charset  : 'utf8'
   }
 });
@@ -76,12 +97,13 @@ db.knex.schema.hasTable('Keywords').then(function(exists){
 /*
   another unused table
 */
+// console.log('keyword.id: ', keyword.id)
 db.knex.schema.hasTable('Project-Keywords').then(function(exists){
   if(!exists){
     db.knex.schema.createTable('Project-Keywords', function(pkey){
       pkey.increments('id').primary();
-      pkey.integer('keyword_id').references(keyword.id);
-      pkey.integer('project_id').references(project.id);
+      // pkey.integer('keyword_id').references(keyword.id);
+      // pkey.integer('project_id').references(project.id);
     }).then(function(table){
       console.log('Created Project-Keyword Table', table);
     });  

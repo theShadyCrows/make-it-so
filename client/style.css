@@ -17,7 +17,7 @@ h4 {
     font-size: 15px;
 }
 
-ul {
+header ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -25,14 +25,14 @@ ul {
     background-color: #FF8C2D;
 }
 
-li {
+header li {
     float: left;
     color: white;
     font-weight: bold;
     font-size: 16px;
 }
 
-li a {
+header li a {
     display: block;
     color: white;
     text-align: center;
@@ -40,11 +40,11 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+header li a:hover {
     background-color: #FFBD39;
 }
 
-a:hover, a:active, a:visited {
+header a:hover, a:active, a:visited {
     color: white;
     text-decoration: none;
 }
@@ -188,3 +188,145 @@ label {
     background-color: #FFFFFF;
     color: #FF8C2D;
 }
+
+
+/* LEGACY PROJECT - REVISED STYLES ========================================= */
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  height: 0;
+  clear: both;
+}
+/* == INDEX PAGE == */
+header {
+  margin-bottom: 20px;
+}
+
+/* == HOME TEMPLATE PAGE == */
+.container {
+  max-width: 1100px;
+  padding: 10px;
+  /*border: 1px solid blue;*/
+}
+
+/* LEFT CONTENT: BOUNTIES */
+.bounty-list {
+  float: left;
+  width: 70%;
+  /*border: 1px solid red;*/
+}
+
+.columns {
+  float: none;
+  box-sizing: border-box;
+  columns: inherit;
+  margin: 20px 0px;
+  padding: 20px;
+}
+
+.bounty-details {
+  float: left;
+  width: 65%;
+  vertical-align: top;
+}
+
+.bounty-details ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.bounty-details ul li {
+  margin-bottom: 10px;
+}
+
+.bounty-details .b-title {
+  font-size: 2.50em;
+  line-height: 1.50em;
+  font-weight: bold;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.bounty-details .b-wanted {
+  font-size: 1.50em;
+}
+
+.bounty-details .b-descr {
+
+}
+
+.bounty-details .b-duration  {
+
+}
+
+.bounty-controls {
+  float: right;
+  width: 32%;
+}
+
+.bounty-controls input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.bounty-controls .total-cont {
+  font-size: 2.50em;
+  line-height: 1.50em;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.bounty-controls button {
+  display: block;
+  margin: 10px 0;
+  width: 100%
+}
+
+/* RIGHT CONTENT: WIDGETS */
+.widget-list {
+  float: right;
+  width: 28%;
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.widget-list ul {
+  /*list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FF8C2D;*/
+}
+
+.bounty-watch {
+  border: 1px solid blue;
+}
+
+.bounty-twitter {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LEGACY PROJECT - REVISED STYLES ========================================= */

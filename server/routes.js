@@ -14,6 +14,7 @@ router.get('/projects', function (req, res) {
   Projects.reset().fetch()
     .then(function(projects) {
       var ret = projects.models;
+      console.log('ret =====> ', ret);
       //this recurse function is basically a for loop
       //but that waits for the promises to finish before
       //starting a new iteration of the loop
@@ -22,6 +23,7 @@ router.get('/projects', function (req, res) {
         db.knex('Pledges').where({
           "project_id":projects.models[i].id          
         }).select("amount").then(function (amounts){
+          console.log('amounts =====> ', amounts);
           if(amounts.length !== 0) {
             var total = 0;
             for (var q in amounts){

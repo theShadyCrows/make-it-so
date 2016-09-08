@@ -1,0 +1,80 @@
+<div ng-controller='homeController' ng-init="getBounties()">
+	
+	<div class="container clearfix">
+		
+		<!-- LEFT: BOUNTY LIST -->
+		<div class="bounty-list">
+			<h2 class="topOfPage">Current Bounties</h2>
+			<div class="columns clearfix" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
+
+				<div class="bounty-details">
+					<ul>
+						<li class="b-title">{{bounties.name}}</li>
+						<li class="b-wanted">WANTED: {{bounties.wanted}}</li>
+						<li class="b-descr">{{bounties.description}}</li>
+						<li class="b-duration">BOUNTY EXPIRES: {{bounties.timeConstraint | date:'longDate'}}</li>
+					</ul>
+
+					<!-- <h1 id='bountyName'>{{bounties.name}}</h1>
+				<h3><span class="bold">Wanted:</span> {{bounties.wanted}}</h3>
+				<h5><span class="bold">Description:</span> {{bounties.description}}</h5>
+				<h3><span class="bold">Time Constraint:</span> {{bounties.timeConstraint | date:'longDate'}}</h3>
+				-->
+				</div> 
+
+				<div class="bounty-controls">
+					<form  ng-submit="contribute(username[$index], amount[$index], bounties.id)">
+						<input type="text" ng-model="username[$index]" placeholder="Username">
+						<input type="text" ng-model="amount[$index]" placeholder="Amount">
+						<button type="submit">CONTRIBUTE!</button>
+
+						<div class="total-cont">
+							{{bounties.amount | currency:"$ ":0}}
+						</div>
+
+						<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<!-- RIGHT: WIDGETS -->
+		<div ng-view="widgets" class="widget-list">
+			<div class="bounty-watch">
+				<h3>BOUNTY WATCH</h3>
+				<ol>
+					<li>Bounty Name</li>
+					<li>Bounty Name</li>
+					<li>Bounty Name</li>
+					<li>Bounty Name</li>
+					<li>Bounty Name</li>
+				</ol>
+			</div>
+			
+			<div class="bounty-twitter">
+				<h3>LATEST BOUNTIES</h3>
+				<ul>
+					<li>Bounty Tweet</li>
+					<li>Bounty Tweet</li>
+					<li>Bounty Tweet</li>
+					<li>Bounty Tweet</li>
+					<li>Bounty Tweet</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	
+</div>

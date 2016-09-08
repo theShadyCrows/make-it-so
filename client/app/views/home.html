@@ -6,7 +6,6 @@
 		<div class="bounty-list">
 			<h2 class="topOfPage">Current Bounties</h2>
 			<div class="columns clearfix" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
-
 				<div class="bounty-details">
 					<ul>
 						<li class="b-title">{{bounties.name}}</li>
@@ -14,12 +13,6 @@
 						<li class="b-descr">{{bounties.description}}</li>
 						<li class="b-duration">BOUNTY EXPIRES: {{bounties.timeConstraint | date:'longDate'}}</li>
 					</ul>
-
-					<!-- <h1 id='bountyName'>{{bounties.name}}</h1>
-				<h3><span class="bold">Wanted:</span> {{bounties.wanted}}</h3>
-				<h5><span class="bold">Description:</span> {{bounties.description}}</h5>
-				<h3><span class="bold">Time Constraint:</span> {{bounties.timeConstraint | date:'longDate'}}</h3>
-				-->
 				</div> 
 
 				<div class="bounty-controls">

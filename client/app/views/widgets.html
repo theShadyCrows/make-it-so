@@ -1,21 +1,21 @@
-<div class="bounty-watch">
-  <h3>BOUNTY WATCH</h3>
-  <ol>
-    <li>Bounty Name</li>
-    <li>Bounty Name</li>
-    <li>Bounty Name</li>
-    <li>Bounty Name</li>
-    <li>Bounty Name</li>
-  </ol>
-</div>
+<div ng-controller="widgetsController">
+  <div class="bounty-watch">
+    <h3>BOUNTY WATCH</h3>
+    <ol>
+      <li ng-repeat="bountyItem in data.topBounties">
+        {{bountyItem.name}}, $ {{bountyItem.total}}
+      </li>
+    </ol>
+  </div>
 
-<div class="bounty-twitter">
-  <h3>LATEST BOUNTIES</h3>
-  <ul>
-    <li>Bounty Tweet</li>
-    <li>Bounty Tweet</li>
-    <li>Bounty Tweet</li>
-    <li>Bounty Tweet</li>
-    <li>Bounty Tweet</li>
-  </ul>
+  <div class="bounty-twitter">
+    <h3>LATEST BOUNTIES</h3>
+    <ul>
+      <li>Bounty Tweet</li>
+      <li>Bounty Tweet</li>
+      <li>Bounty Tweet</li>
+      <li>Bounty Tweet</li>
+      <li>Bounty Tweet</li>
+    </ul>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 var db = require('./db/index.js');
 var router = require('express').Router();
+var mysql = require('mysql');
 
 //Connect collections methods to their corresponding routes
 var Projects = require ('./collections/projects.js')
@@ -36,7 +37,7 @@ router.get('/projects', function (req, res) {
           if (++i < ret.length){
             recurse(i);
           } else {
-            console.log("succesful projects get:", ret);
+            // console.log("succesful projects get:", ret);
             res.send(ret)
           }
         })
@@ -44,6 +45,25 @@ router.get('/projects', function (req, res) {
       recurse(0);
     })
   });
+
+// TOP BOUNTY ===========================================================================
+router.get('/top-bounties', function(request, response) {
+  var sqlSyntax = 'SELECT Projects.id, Projects.name, Pledges.total FROM Projects JOIN (SELECT SUM(Pledges.amount) AS total, Pledges.project_id FROM Pledges GROUP BY Pledges.project_id) Pledges ON Pledges.project_id = Projects.id ORDER BY total DESC';
+
+  db.knex.raw( sqlSyntax )
+  .then(function(rows) {
+    response.send(rows);
+  });
+
+  /*
+  SQL SYNTAX TESTING
+  ==================
+  SELECT Projects.name FROM Projects INNER JOIN Pledges ON Projects.id = Pledges.project_id
+  SELECT Projects.*, Pledges.* FROM Projects INNER JOIN Pledges ON Projects.id = Pledges.project_id
+  SELECT Projects.id, Projects.name, Pledges.total FROM Projects JOIN (SELECT SUM(Pledges.amount) AS total, Pledges.project_id FROM Pledges GROUP BY Pledges.project_id) Pledges ON Pledges.project_id = Projects.id
+  */
+
+});
 
 /*
   return an array of all the users

@@ -127,7 +127,7 @@ router.post('/project', function (req, res) {
         db.knex('Users').insert({
           "username": req.body.username
         }).then(function(user_id){
-         // console.log("$$succesful post to projects:", project_attributes);
+         console.log("$$succesful post to projects:", project_attributes);
 
           //project id, user id, amount, res
           _createPledge(project_attributes.id, user_id, amount, res)
@@ -135,11 +135,12 @@ router.post('/project', function (req, res) {
       }
     })
     .then(function () {
-      client.post('statuses/update', {status: 'NEW BOUNTY CREATED, CHECK IT OUT!'},  function(error, tweet, response) {
+      client.post('statuses/update', {status: "Checkout our new bounty " + req.body.projectName + " submitted by user " + req.body.username + " And remember - stay SHADY!"},  
+        function(error, tweet, response) {
       if(error) throw error;
       console.log('YO!!!!!');
-      console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
-      console.log('RESPONSEEEEEE',response);  // Raw response object. 
+      //console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
+     // console.log('RESPONSEEEEEE',response);  // Raw response object. 
 });
 
     })

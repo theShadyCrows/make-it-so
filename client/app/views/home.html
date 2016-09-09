@@ -6,6 +6,7 @@
 		<div class="bounty-list">
 			<h2 class="topOfPage">Current Bounties</h2>
 			<div class="columns clearfix" ng-repeat="bounties in data | orderBy:'$index':true | filter:searchbar">
+				<a id="{{bounties.id}}"></a>
 				<div class="bounty-details">
 					<ul>
 						<li class="b-title">{{bounties.name}}</li>

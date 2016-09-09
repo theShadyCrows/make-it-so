@@ -205,7 +205,7 @@ header {
 
 /* == HOME TEMPLATE PAGE == */
 .container {
-  max-width: 1100px;
+  max-width: 1200px;
   padding: 10px;
   /*border: 1px solid blue;*/
 }
@@ -217,7 +217,7 @@ header {
   /*border: 1px solid red;*/
 }
 .bounty-list h2 {
-  margin-top: 0;
+  margin: 0;
 }
 
 .columns {
@@ -230,7 +230,7 @@ header {
 
 .bounty-details {
   float: left;
-  width: 65%;
+  width: 60%;
   vertical-align: top;
 }
 
@@ -267,7 +267,7 @@ header {
 
 .bounty-controls {
   float: right;
-  width: 32%;
+  width: 38%;
 }
 
 .bounty-controls input {
@@ -299,26 +299,53 @@ header {
   /*border: 1px solid red;*/
 }
 
-.bounty-watch {
+.widget-list h3 {
+  margin: 0;
+}
+
+.bounty-watch,
+.bounty-twitter {
+  margin: 20px 0;
   padding: 10px;
   background-color: #FF8C2D;
 }
 
-.bounty-watch h3 {
-  margin-top: 0;
-}
-
 .bounty-watch ol {
-  margin-left: -10px;
+  margin-left: -40px;
 }
 
 .bounty-watch ol li {
   padding: 5px 0;
 }
 
-/*.bounty-watch ol li:hover {
-  background-color: #FFBD39;
-}*/
+.bounty-watch li {
+  list-style-position: inside;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bounty-watch a {
+  display: block;
+  text-decoration: none;
+  outline: 0;
+  margin-bottom: 10px;
+}
+
+.bounty-watch a:last-child {
+  margin-bottom: 0;
+}
+
+.bounty-watch a:hover {
+  text-decoration: none;
+  background: #FFBD39;
+}
+
+.bounty-watch li span {
+  font-weight: bold;
+  margin: 0px 10px;
+}
+
 
 .bounty-twitter {
 

@@ -21,7 +21,6 @@ angular.module('makeitso.form', [])
    console.log('*** user info in $scope - - >', $scope.user);
     // stringify the scope.user object to be sent to the server
    var stringifiedScope = JSON.stringify($scope.user);
-   console.log(' -- stringifiedScope -->', stringifiedScope);
    // http post request with stringifiedScope data
    $http({
      'method': 'POST',
@@ -39,6 +38,6 @@ angular.module('makeitso.form', [])
     // or console log that the information was not successfully sent and received
      console.log('user information not submitted');
    });
-
  };
+
 });

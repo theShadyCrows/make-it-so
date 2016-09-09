@@ -67,4 +67,5 @@ angular.module('makeitso.home', [])
 				console.log('there was an error deleting your project!',error);
 			})
 		}
-	})
+
+	});

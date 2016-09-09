@@ -1,6 +1,8 @@
 angular.module('makeitso', [
 	'makeitso.form', 
 	'makeitso.home',
+  'makeitso.widgets',
+  'makeitso.services',
 	'ui.router'
 	// 'ngRoute'
 ])

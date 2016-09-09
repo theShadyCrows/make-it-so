@@ -14,8 +14,6 @@ var dbConfig = require("./dbConfig.js");
   }
 */
 
-
-
 var knex = require('knex')({
   client: 'mysql',
   connection: {
@@ -29,8 +27,6 @@ var knex = require('knex')({
     charset  : 'utf8'
   }
 });
-
-
 
 var db = require('bookshelf')(knex);
 

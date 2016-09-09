@@ -216,6 +216,9 @@ header {
   width: 70%;
   /*border: 1px solid red;*/
 }
+.bounty-list h2 {
+  margin-top: 0;
+}
 
 .columns {
   float: none;
@@ -292,21 +295,30 @@ header {
 .widget-list {
   float: right;
   width: 28%;
-  padding: 10px;
-  border: 1px solid red;
-}
-
-.widget-list ul {
-  /*list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #FF8C2D;*/
+  /*padding: 10px;*/
+  /*border: 1px solid red;*/
 }
 
 .bounty-watch {
-  border: 1px solid blue;
+  padding: 10px;
+  background-color: #FF8C2D;
 }
+
+.bounty-watch h3 {
+  margin-top: 0;
+}
+
+.bounty-watch ol {
+  margin-left: -10px;
+}
+
+.bounty-watch ol li {
+  padding: 5px 0;
+}
+
+/*.bounty-watch ol li:hover {
+  background-color: #FFBD39;
+}*/
 
 .bounty-twitter {
 

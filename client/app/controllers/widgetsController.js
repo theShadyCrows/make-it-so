@@ -1,9 +1,9 @@
 angular.module('makeitso.widgets', [])
 
-.controller('widgetsController', function($scope, topBountiesFactory) {
+.controller('widgetsController', function($scope, topBountiesFactory, $location, $anchorScroll) {
   $scope.data = {};
 
-  // TOP BOUNTIES: REQUEST DATA AND APPEND TOP PAGE ===================================
+  // TOP BOUNTIES: REQUEST DATA AND APPEND TOP PAGE =====================================
   topBountiesFactory.topBounties()
   .success(function (topBountiesObject) {
     $scope.data.topBounties = topBountiesObject[0];
@@ -11,4 +11,11 @@ angular.module('makeitso.widgets', [])
   .catch(function (error) {
     console.error(error);
   });
+
+  // HANDLE ANCHOR SCROLL FOR TOP BOUNTIES ==============================================
+  $scope.goToBounty = function(bountyID) {
+    $location.hash(bountyID);
+    $anchorScroll();
+  };
+
 });

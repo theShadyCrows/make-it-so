@@ -4,7 +4,6 @@ angular.module('makeitso', [
   'makeitso.widgets',
   'makeitso.services',
 	'ui.router'
-	// 'ngRoute'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -31,19 +30,3 @@ angular.module('makeitso', [
 		controller: 'formController'
   });
 });
-
-// .config(function($routeProvider, $httpProvider){
-// 	$routeProvider
-// 	.when('/home', {
-// 		templateUrl: 'app/views/home.html',
-// 		// templateUrl: 'app/home.html',
-// 		controller: 'homeController'
-// 	})
-// 	.when('/form', {
-// 		templateUrl: 'app/form.html',
-// 		controller: 'formController'
-// 	})
-// 	.otherwise({
-// 		redirectTo: '/home'
-// 	});
-// });

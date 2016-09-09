@@ -1,15 +1,18 @@
 <div ng-controller="widgetsController">
+<h3>BOUNTY WATCH</h3>
   <div class="bounty-watch">
-    <h3>BOUNTY WATCH</h3>
     <ol>
-      <li ng-repeat="bountyItem in data.topBounties">
-        {{bountyItem.name}}, $ {{bountyItem.total}}
-      </li>
+      <a href="" ng-click="goToBounty( bountyItem.id )" ng-repeat="bountyItem in data.topBounties">
+        <li>
+          <span>{{bountyItem.name}}</span>
+          $ {{bountyItem.total}}
+        </li>
+      </a>
     </ol>
   </div>
 
+  <h3>LATEST BOUNTIES</h3>
   <div class="bounty-twitter">
-    <h3>LATEST BOUNTIES</h3>
     <ul>
       <li>Bounty Tweet</li>
       <li>Bounty Tweet</li>

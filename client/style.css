@@ -8,9 +8,16 @@ body {
   color: #222; }
 
 h1 {
-    margin-bottom: 5px; 
-    margin-top: 1px;
+    margin-bottom: 0px; 
+    margin-top: 5px;
     margin-left: 18px;
+    display: inline-block;
+}
+
+.crow {
+  display: inline-block;
+  margin-left: 20px; 
+
 }
 
 h4 {
@@ -22,7 +29,7 @@ header ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #FF8C2D;
+    background-color: #1a1a1a;
 }
 
 header li {
@@ -104,7 +111,8 @@ label {
 }
 
 .columns {
-  background-color: #38ABAB;
+/*  background-color: #38ABAB;*/
+background-color: #1a1a1a;
   color: white;
   width: 100%;
   float: left;
@@ -140,7 +148,8 @@ label {
 }
 
 #submitForm{
-  background-color: #38ABAB;
+  /*background-color: #38ABAB;*/
+  background-color: #1a1a1a;
   color: white;
   box-sizing: border-box;
   text-align: center;
@@ -348,3 +357,29 @@ header {
 .bounty-twitter {
 
 }
+
+
+.playSound {
+  background-color: black;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LEGACY PROJECT - REVISED STYLES ========================================= */
+

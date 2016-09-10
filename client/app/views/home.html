@@ -26,9 +26,11 @@
 							{{bounties.amount | currency:"$ ":0}}
 						</div>
 
-						<button type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+						<button class="bountyBtn" type="click" ng-click="claim(bounties.id)">CLAIM BOUNTY!</button>
+						<button type='click' id='bountyBtn1'>PLAY!</button>
 
 					</form>
+						<script src="jquery.js"></script>
 				</div>
 
 			</div>

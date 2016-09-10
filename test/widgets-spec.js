@@ -49,6 +49,120 @@ describe('Widgets Controller', function() {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+describe('audio button', function() {
+  var obj = document.createElement("audio");
+  obj.src = "http://www.wavlist.com/soundfx/010/crow-1.wav";
+  obj.volume = 0.10;
+  obj.autoPlay = false;
+  obj.preLoad = true; 
+
+
+ it('should be defined', function() {
+    expect(obj).toBeDefined();
+  });
+
+ describe('play', function() {
+    it('should have a method called play', function() {
+      expect(obj.play).to.be.ok;
+    });
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // WIDGETS FACTORY TESTING
 // describe('Widgets Factory', function() {
 //   var topBountiesFactory;

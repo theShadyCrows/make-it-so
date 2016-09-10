@@ -17,17 +17,12 @@ h1 {
 .crow {
   display: inline-block;
   margin-left: 20px; 
-
 }
-
 
 #twitter-widget-0 {
   /*width: 300px !important;*/
-
   /*background-color: #1a1a1a !important;*/
   /*float: right;*/
-
-
 }
 
 h4 {
@@ -324,7 +319,8 @@ header {
 .bounty-twitter {
   margin: 20px 0;
   padding: 10px;
-  background-color: #FF8C2D;
+  border: 10px solid #FF8C2D;
+  /*background-color: #FF8C2D;*/
 }
 
 .bounty-watch ol {
@@ -333,12 +329,10 @@ header {
 
 .bounty-watch ol li {
   padding: 5px 0;
-}
-
-.bounty-watch li {
+  border-bottom: 1px solid #999;
   list-style-position: inside;
-  color: #fff;
-  font-size: 20px;
+  color: #000;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -365,33 +359,12 @@ header {
 
 /* RIGHT CONTENT: WIDGETS - TOP BOUNTIES */
 .bounty-twitter {
-  height: 520px;
+  height: 540px;
   z-index: 2000;
 
 }
-
 
 .playSound {
   background-color: black;
   color: white;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LEGACY PROJECT - REVISED STYLES ========================================= */
-

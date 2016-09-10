@@ -61,6 +61,7 @@ angular.module('makeitso.home', [])
 				console.log('project is deleted!',response);
 				//call to getBounties below refreshes the info on 
 				//the page to remove the deleted project from the list.
+				
 				$scope.getBounties();
 			})
 			.catch(function(error){

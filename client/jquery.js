@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(window).on('ready', function() {
     console.log( "test" );
 
      var obj = document.createElement("audio");

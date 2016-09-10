@@ -1,8 +1,6 @@
 angular.module('makeitso.widgets', [])
 
-.controller('widgetsController', function($scope, $timeout, topBountiesFactory, $location, $anchorScroll) {
-  
-  $timeout = twttr.widgets.load();
+.controller('widgetsController', function($scope, $location, $anchorScroll, topBountiesFactory) {
 
   $scope.data = {};
 

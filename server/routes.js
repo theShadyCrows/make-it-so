@@ -33,13 +33,11 @@ router.get('/projects', function (req, res) {
         // console.log(projects.models[i])
         db.knex('Pledges').where({
           "project_id":projects.models[i].id          
-        }).select("amount").then(function (amounts){
-          console.log('amounts =====> ', amounts);
+        }).select("amount").then(function (amounts) {
           if(amounts.length !== 0) {
             var total = 0;
             for (var q in amounts){
               total += amounts[q].amount;
-            console.log('AMOUNTS',amounts[1]);
             }
             ret[i].attributes.amount = total
           }

@@ -35,8 +35,8 @@
     
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <!-- <div ng-view></div> -->
-    <div ui-view></div>
-    <a class="twitter-timeline" href="https://twitter.com/MakeItCrow">Tweets by MakeItCrow</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div ui-view id="loadIt"></div>
+    <!-- <a class="twitter-timeline" href="https://twitter.com/MakeItCrow">Tweets by MakeItCrow</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
     <!-- SCRIPTS -->
     <!-- load angular, angular-route, jquery, bootstrap, and our app and home controllers -->
@@ -51,8 +51,12 @@
     <script src="app/controllers/formController.js"></script>
     <script src="app/controllers/homeController.js"></script>
     <script src="app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/core.js"></script>
     <script src="jquery.js"></script>
+    <script>
+      $(window).load(function () {
+          $.getScript('http://platform.twitter.com/widgets.js');
+      });
+    </script>
 
 
   </body>

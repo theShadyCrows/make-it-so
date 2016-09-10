@@ -1,7 +1,6 @@
 angular.module('makeitso.widgets', [])
 
-.controller('widgetsController', function($scope, topBountiesFactory, $location, $anchorScroll) {
-  
+.controller('widgetsController', function($scope, $location, $anchorScroll, topBountiesFactory) {
 
   $scope.data = {};
 

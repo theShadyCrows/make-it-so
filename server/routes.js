@@ -140,11 +140,11 @@ router.post('/project', function (req, res) {
     .then(function () {
       client.post('statuses/update', {status: "Checkout our new bounty " + req.body.projectName + " submitted by user " + req.body.username + " And remember - stay SHADY!"},  
         function(error, tweet, response) {
-      if(error) throw error;
-      console.log('YO!!!!!');
-      //console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
-     // console.log('RESPONSEEEEEE',response);  // Raw response object. 
-});
+          if(error) throw error;
+          console.log('YO!!!!!');
+            //console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
+              // console.log('RESPONSEEEEEE',response);  // Raw response object. 
+        });
 
     })
   });

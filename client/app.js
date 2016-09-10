@@ -32,6 +32,7 @@ angular.module('makeitso', [
   });
 });
 
+
 // .config(function($routeProvider, $httpProvider){
 // 	$routeProvider
 // 	.when('/home', {

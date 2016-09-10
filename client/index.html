@@ -43,6 +43,7 @@
 
 
     <!-- SCRIPTS -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <!-- load angular, angular-route, jquery, bootstrap, and our app and home controllers -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <!-- ANGULAR UI-ROUTER -->
@@ -58,7 +59,7 @@
     <script src="app.js"></script>
     <script src="jquery.js"></script>
     <script>
-      $(window).load(function () {
+      $(window).on("on",function () {
           $.getScript('http://platform.twitter.com/widgets.js');
       });
     </script>

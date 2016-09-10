@@ -48,6 +48,7 @@ angular.module('makeitso.home', [])
 		//It needs to + projectId in the url to delete the selected project.
 		$scope.remove = {};
 		$scope.claim = function(projectId){
+			console.log('claim running')
 			$scope.remove.projectId = projectId;
 			var stringifiedRemove = JSON.stringify($scope.remove);
 			console.log('this is stringifiedRemove:', stringifiedRemove);
@@ -68,4 +69,39 @@ angular.module('makeitso.home', [])
 			})
 		}
 
-	});
+		$scope.stripe = function(projectId){
+		console.log('stripe callsed')			
+			var amount = $('.amountInput').val();
+			var username = $('.userInput').val();			
+
+			var handler = StripeCheckout.configure({
+			  key: 'pk_test_SWgrpVGHysx0jQNi5vRoheHv',
+			  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+			  locale: 'auto',
+			  bitcoin: true,
+			  token: function(token) {
+			  	$scope.contribute(username,amount,projectId);
+			    // You can access the token ID with `token.id`.
+			    // Get the token ID to your server-side code for use.
+			  }
+			});
+
+			  // Open Checkout with further options:
+			  handler.open({
+			    name: 'Shady Crows',
+			    description: 'Bounty',
+			    amount: amount * 100
+			  });
+			  // e.preventDefault();
+			
+
+			// Close Checkout on page navigation:
+			window.addEventListener('popstate', function() {
+			  handler.close();
+			});
+
+
+		}
+
+	})
+

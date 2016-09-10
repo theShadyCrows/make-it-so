@@ -18,8 +18,15 @@
 
 				<div class="bounty-controls">
 					<form  ng-submit="contribute(username[$index], amount[$index], bounties.id)">
-						<input type="text" ng-model="username[$index]" placeholder="Username">
-						<input type="text" ng-model="amount[$index]" placeholder="Amount">
+						<input type="text" class = "userInput" ng-model="username[$index]" placeholder="Username">
+						<input type="text" class = "amountInput" ng-model="amount[$index]" placeholder="Amount">
+						
+						<!-- STRIPE -->
+						<button class="customButton" type="click" ng-click="stripe(bounties.id)">
+						STRIPE PAY
+						</button>
+						<!-- STRIPE -->
+
 						<button type="submit">CONTRIBUTE!</button>
 
 						<div class="total-cont">

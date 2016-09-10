@@ -4,9 +4,6 @@ angular.module('makeitso.services', [])
 // WIDGET: TOP BOUNTIES =============================================================
 .factory('topBountiesFactory', function($http) {
   var topBounties = function() {
-    // mysql -h mysqlcluster14.registeredsite.com -u shadyadmin -p
-    // !Qaz2wsx3edc
-
     // REQUEST 
     return $http({
       'method': 'GET',

@@ -1,13 +1,15 @@
 'use strict';
 
-// WIDGETS TESTING
+// WIDGETS TESTING ============================================================
 describe('Widgets Controller', function() {
   var $controller
   var widgetsController;
   var $scope;
   var $location;
   var $anchorScroll;
+
   var topBountiesFactory;
+  var $httpBackend;
 
   // LOAD AND ADD MODULES
   beforeEach(angular.mock.module('ui.router'));
@@ -35,34 +37,50 @@ describe('Widgets Controller', function() {
     expect(widgetsController).toBeDefined();
   });
 
+  // WIDGETS FACTORY ==========================================================
   describe('Widgets Factory', function() {
-
     // INJECT FACTORY
-    beforeEach(inject(function(_topBountiesFactory_) {
+    beforeEach(inject(function(_topBountiesFactory_, _$httpBackend_) {
       topBountiesFactory = _topBountiesFactory_;
+      $httpBackend = _$httpBackend_;
     }));
 
     // VERIFY THE FACTORY EXISTS
     it('should be defined', function() {
       expect(topBountiesFactory).toBeDefined();
     });
+
+    // TEST GET REQUEST
+    beforeEach(inject(function(_$httpBackend_) {
+      $httpBackend = _$httpBackend_;
+    }));
+
+    it('should return data from mySQL GET request', function() {
+      var fakeTopBounties = [{}, {}, {}, {}, {}];
+      $httpBackend.whenGET('/top-bounties').respond([fakeTopBounties]);
+
+      $httpBackend.flush();
+      expect($scope.data.topBounties).toEqual(fakeTopBounties);
+
+    });
   });
+
 });
 
-// // WIDGETS FACTORY TESTING
-// describe('Widgets Factory', function() {
-//   var topBountiesFactory;
 
-//   // LOAD MODULES
-//   beforeEach(angular.mock.module('makeitso.services'));
 
-//   // INJECT FACTORY
-//   beforeEach(inject(function(_topBountiesFactory_) {
-//     topBountiesFactory = _topBountiesFactory_;
-//   }));
 
-//   // VERIFY THE FACTORY EXISTS
-//   it('should be defined', function() {
-//     expect(topBountiesFactory).toBeDefined();
-//   });
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+

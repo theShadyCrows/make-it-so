@@ -69,7 +69,8 @@ angular.module('makeitso.home', [])
 			})
 		}
 
-		$scope.stripe = function(projectId){			
+		$scope.stripe = function(projectId){
+		console.log('stripe callsed')			
 			var amount = $('.amountInput').val();
 			var username = $('.userInput').val();			
 

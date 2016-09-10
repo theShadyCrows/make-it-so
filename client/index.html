@@ -11,15 +11,13 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <!-- this fourth link references the fonts we got from google, megrim and raleway -->
     <link href="https://fonts.googleapis.com/css?family=Megrim|Raleway|PT+Sans" rel="stylesheet">
-
-    
   </head>
   <body>
     
     <header>
       <!-- logo image -->
       <h1 id="title"><a href="/">Makeit.Crow</a></h1>
-      <img src="http://img14.deviantart.net/665d/i/2008/356/2/7/crow_by_duffzilla.jpg" alt="Mountain View" style="width:80px;height:100px;">
+      <img src="https://img14.deviantart.net/665d/i/2008/356/2/7/crow_by_duffzilla.jpg" alt="Mountain View" style="width:80px;height:100px;">
       
       <!--  nav bar as list, the  -->
       <ul>
@@ -33,16 +31,13 @@
         </li>
       </ul>
     </header>
-    <!-- <a class="twitter-timeline" href="https://twitter.com/MakeItCrow">Tweets by MakeItCrow</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
     
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <!-- <div ng-view></div> -->
-
     <div ui-view></div>
-   
-
 
     <!-- SCRIPTS -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <!-- load angular, angular-route, jquery, bootstrap, and our app and home controllers -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <!-- ANGULAR UI-ROUTER -->
@@ -59,10 +54,9 @@
     <script src="jquery.js"></script>
     <script>
       $(window).on('load', function () {
-          $.getScript('http://platform.twitter.com/widgets.js');
+        $.getScript('https://platform.twitter.com/widgets.js');
       });
     </script>
-
 
   </body>
 </html>

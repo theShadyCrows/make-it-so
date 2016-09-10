@@ -1,6 +1,6 @@
 angular.module('makeitso.home', [])
 
-	.controller('homeController', function($scope, $http){
+	.controller('homeController', function($scope, $http) {
 		//scope.data MUST be an array for the $index functionality to work in the home.html form.
 		$scope.data = [];
 
@@ -69,4 +69,35 @@ angular.module('makeitso.home', [])
 			})
 		}
 
-	});
+		$scope.stripe = function(projectId){		
+			var amount = $('.amountInput').val();
+			var username = $('.userInput').val();			
+
+			var handler = StripeCheckout.configure({
+			  key: 'pk_test_SWgrpVGHysx0jQNi5vRoheHv',
+			  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+			  locale: 'auto',
+			  bitcoin: true,
+			  token: function(token) {
+			  	$scope.contribute(username,amount,projectId);
+			    // You can access the token ID with `token.id`.
+			    // Get the token ID to your server-side code for use.
+			  }
+			});
+
+			  // Open Checkout with further options:
+			  handler.open({
+			    name: 'Shady Crows',
+			    description: 'Bounty',
+			    amount: amount * 100
+			  });
+			  // e.preventDefault();
+			
+
+			// Close Checkout on page navigation:
+			window.addEventListener('popstate', function() {
+			  handler.close();
+			});
+		}
+
+});

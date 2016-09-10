@@ -17,7 +17,7 @@
 				</div> 
 
 				<div class="bounty-controls">
-					<form  ng-submit="contribute(username[$index], amount[$index], bounties.id)">
+					<form>
 						<input type="text" class = "userInput" ng-model="username[$index]" placeholder="Username">
 						<input type="text" class = "amountInput" ng-model="amount[$index]" placeholder="Amount">
 						
@@ -27,7 +27,7 @@
 						</button>
 						<!-- STRIPE -->
 
-						<button type="submit">CONTRIBUTE!</button>
+						<button type="click" ng-click="contribute(username[$index], amount[$index], bounties.id)">CONTRIBUTE!</button>
 
 						<div class="total-cont">
 							{{bounties.amount | currency:"$ ":0}}

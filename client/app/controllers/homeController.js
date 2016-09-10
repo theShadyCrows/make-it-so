@@ -23,6 +23,7 @@ angular.module('makeitso.home', [])
 
 		$scope.values = {};
 		$scope.contribute = function(username, amount, id){
+			console.log('contribute running')
 			$scope.values.username = username;
 			$scope.values.amount = amount;
 			$scope.values.project_id = id;
@@ -69,7 +70,8 @@ angular.module('makeitso.home', [])
 			})
 		}
 
-		$scope.stripe = function(projectId){		
+		$scope.stripe = function(projectId){
+			console.log('stripe called!')		
 			var amount = $('.amountInput').val();
 			var username = $('.userInput').val();			
 

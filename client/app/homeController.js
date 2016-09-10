@@ -23,6 +23,7 @@ angular.module('makeitso.home', [])
 
 		$scope.values = {};
 		$scope.contribute = function(username, amount, id){
+			console.log('contribute running!')
 			$scope.values.username = username;
 			$scope.values.amount = amount;
 			$scope.values.project_id = id;

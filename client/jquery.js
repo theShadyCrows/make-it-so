@@ -1,4 +1,6 @@
 $(document).on('ready', function() {
+    console.log("test");
+
     var obj = document.createElement("audio");
     console.log('OBJECT', obj);
     obj.src = "http://www.wavlist.com/soundfx/010/crow-1.wav";

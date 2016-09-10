@@ -33,13 +33,11 @@ router.get('/projects', function (req, res) {
         // console.log(projects.models[i])
         db.knex('Pledges').where({
           "project_id":projects.models[i].id          
-        }).select("amount").then(function (amounts){
-          console.log('amounts =====> ', amounts);
+        }).select("amount").then(function (amounts) {
           if(amounts.length !== 0) {
             var total = 0;
             for (var q in amounts){
               total += amounts[q].amount;
-            console.log('AMOUNTS',amounts[1]);
             }
             ret[i].attributes.amount = total
           }
@@ -56,31 +54,16 @@ router.get('/projects', function (req, res) {
       recurse(0);
     })
 
-
-
-
-
-
-
-
   });
 
 // TOP BOUNTY ===========================================================================
 router.get('/top-bounties', function(request, response) {
-  var sqlSyntax = 'SELECT Projects.id, Projects.name, Pledges.total FROM Projects JOIN (SELECT SUM(Pledges.amount) AS total, Pledges.project_id FROM Pledges GROUP BY Pledges.project_id) Pledges ON Pledges.project_id = Projects.id ORDER BY total DESC';
+  var sqlSyntax = 'SELECT Projects.id, Projects.name, Pledges.total FROM Projects JOIN (SELECT SUM(Pledges.amount) AS total, Pledges.project_id FROM Pledges GROUP BY Pledges.project_id) Pledges ON Pledges.project_id = Projects.id ORDER BY total DESC LIMIT 5';
 
-  db.knex.raw( sqlSyntax )
+  db.knex.raw(sqlSyntax)
   .then(function(rows) {
     response.send(rows);
   });
-
-  /*
-  SQL SYNTAX TESTING
-  ==================
-  SELECT Projects.name FROM Projects INNER JOIN Pledges ON Projects.id = Pledges.project_id
-  SELECT Projects.*, Pledges.* FROM Projects INNER JOIN Pledges ON Projects.id = Pledges.project_id
-  SELECT Projects.id, Projects.name, Pledges.total FROM Projects JOIN (SELECT SUM(Pledges.amount) AS total, Pledges.project_id FROM Pledges GROUP BY Pledges.project_id) Pledges ON Pledges.project_id = Projects.id
-  */
 
 });
 

@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Fri Sep 09 2016 19:09:21 GMT-0400 (EDT)
+// Generated on Sat Sep 10 2016 10:54:52 GMT-0400 (EDT)
 
 module.exports = function(config) {
   config.set({
@@ -18,10 +18,10 @@ module.exports = function(config) {
         './node_modules/angular/angular.js',                             // angular
         './node_modules/angular-ui-router/release/angular-ui-router.js', // ui-router
         './node_modules/angular-mocks/angular-mocks.js',                 // loads our modules for tests
-        './client/app/controllers/widgetsController.js',                 // our Users factory
-        './client/app.js',                                              // our angular app
-        './client/app/controllers/widgets-spec.js',
-        // './test/widgets-spec.js' 
+        './client/app/services/services.js',                             // our Widgets factory
+        './client/app/controllers/widgetsController.js',                 // our Widgets Controller
+        './client/app.js',                                               // our angular app
+        './test/widgets-spec.js'                                         // our test file for our Widgets factory
     ],
 
 
@@ -39,7 +39,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port

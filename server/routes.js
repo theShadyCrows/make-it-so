@@ -23,7 +23,8 @@ var client = new Twitter({
   returns an array of all the projects after attaching an amount to each project
 */
 router.get('/projects', function (req, res) {
-  Projects.reset().fetch()
+  console.log('>>>>>> START GET PROJECTS');
+  Projects.fetch()
     .then(function(projects) {
       var ret = projects.models;
       //this recurse function is basically a for loop
@@ -31,7 +32,9 @@ router.get('/projects', function (req, res) {
       //starting a new iteration of the loop
       var recurse = function(i){
         // console.log(projects.models[i])
+        console.log('>>>>>> START RECURSE PLEDGES');
         db.knex('Pledges').where({
+
           "project_id":projects.models[i].id          
         }).select("amount").then(function (amounts) {
           if(amounts.length !== 0) {
@@ -71,7 +74,8 @@ router.get('/top-bounties', function(request, response) {
   return an array of all the users
 */
 router.get('/users', function (req, res) {
-  Users.reset().fetch()
+  console.log('>>>>>> GET USERS');
+  Users.fetch()
     .then(function(users) {
       console.log("succesful users get:", user.models);
       res.send(users.models)
@@ -84,7 +88,7 @@ router.get('/users', function (req, res) {
   Unused function, did not implement keywords.
 */
 router.get('/keywords', function (req, res) {
-  Keywords.reset().fetch()
+  Keywords.fetch()
     .then(function(keywords) {
       console.log("succesful keywords get:", keywords.models);
       res.send(keywords.models)
@@ -105,7 +109,6 @@ router.get('/keywords', function (req, res) {
 */
 
 router.post('/project', function (req, res) {
-
   Projects.create({
     name: req.body.projectName,
     timeConstraint: req.body.timeConstraint,
@@ -137,16 +140,11 @@ router.post('/project', function (req, res) {
         });
       }
     })
-    .then(function () {
-      client.post('statuses/update', {status: "Checkout our new bounty " + req.body.projectName + " submitted by user " + req.body.username + " And remember - stay SHADY!"},  
-        function(error, tweet, response) {
-          if(error) throw error;
-          console.log('YO!!!!!');
-            //console.log('TWEEEEEEEEET!!!',tweet);  // Tweet body. 
-              // console.log('RESPONSEEEEEE',response);  // Raw response object. 
-        });
-
-    })
+    // .then(function() {
+    //   client.post('statuses/update', { status: "Checkout our new bounty " + req.body.projectName + " submitted by user " + req.body.username + " And remember - stay SHADY!" }, function(error, tweet, response) {
+    //       if(error) throw error;
+    //     });
+    // });
   });
 });
 
@@ -158,6 +156,7 @@ router.post('/project', function (req, res) {
   Creates a new user in the database
 */
 router.post('/users', function (req, res) {
+  console.log('>>>>>> START POST USERS');
   db.knex('Users').insert({
     // "email": req.body.email,
     "username": req.body.username
@@ -193,7 +192,6 @@ router.post('/keywords', function (req, res) {
   This function is really only used for testing purposes when posting to pledges
 */
 router.post('/pledges', function (req, res) {
-
   db.knex('Users').where({
     "username": req.body.username
   }).select('id').then(function(data){
@@ -230,11 +228,28 @@ var _createPledge = function(project_id, user_id, amount, res){
   currently functionality simply deletes claimed projects instead of storing them anywhere useful
 */
 router.delete('/project/:projectId', function (req, res) {
-	db.knex('Projects').where({
+  console.log('>>>>>> START DELETE PROJECT');
+	db.knex('Projects')
+  .where({
    "id": req.params.projectId 
-  }).del().then(function(x){
-    res.end();
   })
+  .del()
+  .then(function(x) {
+    res.end();
+  });
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+

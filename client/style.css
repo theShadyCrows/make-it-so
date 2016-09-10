@@ -22,10 +22,10 @@ h1 {
 
 
 #twitter-widget-0 {
-  width: 300px !important;
-  height: 800px !important;
-  background-color: #1a1a1a !important;
-  float: right;
+  /*width: 300px !important;*/
+
+  /*background-color: #1a1a1a !important;*/
+  /*float: right;*/
 
 
 }
@@ -365,7 +365,7 @@ header {
 
 /* RIGHT CONTENT: WIDGETS - TOP BOUNTIES */
 .bounty-twitter {
-  height: 400px;
+  height: 520px;
   z-index: 2000;
 
 }

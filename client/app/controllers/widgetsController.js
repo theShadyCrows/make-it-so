@@ -1,6 +1,9 @@
 angular.module('makeitso.widgets', [])
 
-.controller('widgetsController', function($scope, topBountiesFactory, $location, $anchorScroll) {
+.controller('widgetsController', function($scope, $timeout, topBountiesFactory, $location, $anchorScroll) {
+  
+  $timeout = twttr.widgets.load();
+
   $scope.data = {};
 
   // TOP BOUNTIES: REQUEST DATA AND APPEND TOP PAGE =====================================

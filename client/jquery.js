@@ -8,12 +8,17 @@ $( document ).ready(function() {
         obj.autoPlay=false;
         obj.preLoad=true;       
  
-        $("bountyBtn1").on("click",function() {
-        	console.log('ALL BUTTONS')
+        $("#makeitso-button").on("click",function() {
+        	console.log('clicked')
             obj.play();
         });
 
-        // $("makeitso-button").on("click")
+        // $("").on("click", function () {
+        //   console.log('FLY PELICAN!')
+        //   $(this).css("background-color","yellow");
+
+        // })
+
 
  
 // $( "#makeitso-button" ).on( "click", function() {

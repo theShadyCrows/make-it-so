@@ -8,7 +8,7 @@ $(document).ready( function() {
     obj.autoPlay = false;
     obj.preLoad = true;       
 
-    $("#makeitso-button").on("click",function() {
+    $("#testButton").on("click",function() {
         console.log('clicked')
         obj.play();
     });

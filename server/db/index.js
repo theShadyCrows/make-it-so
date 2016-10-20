@@ -1,4 +1,4 @@
-var dbConfig = require("./dbConfig.js");
+//var dbConfig = require("./dbConfig.js");
 
 // console.log('dbConfig.username: ', dbConfig.username);
 // console.log('dbConfig.password: ', dbConfig.password);

@@ -6,8 +6,7 @@ node_modules
 # production
 build
 
-#db
-dbConfig.js
+
 
 # misc
 .DS_Store
